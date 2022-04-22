@@ -6,16 +6,18 @@ public class emp_model {
     private String address;
     private String phone;
     private int salary;
+    private String img;
 
     //constructor
     public emp_model(){
     }
-    public emp_model(int id, String name, String address, String phone, int salary){
+    public emp_model(int id, String name, String address, String phone, int salary, String img){
         this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.salary = salary;
+        this.img = img;
     }
 
     //Getter and Setter
@@ -48,6 +50,12 @@ public class emp_model {
     }
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+    public String getImg() {
+        return img;
+    }
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override

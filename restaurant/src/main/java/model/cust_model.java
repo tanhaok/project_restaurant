@@ -5,15 +5,17 @@ public class cust_model {
     private String name;
     private String address;
     private String phone;
+    private String img;
 
     //Constructor
     public cust_model(){
     }
-    public cust_model(int id, String name, String address, String phone) {
+    public cust_model(int id, String name, String address, String phone, String img) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
+        this.img = img;
     }
 
     //Getter and Setter
@@ -40,6 +42,12 @@ public class cust_model {
     }
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+    public String getImg() {
+        return img;
+    }
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override
