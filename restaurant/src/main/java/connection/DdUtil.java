@@ -10,7 +10,8 @@ public class DdUtil {
     private static Connection connection;
     private static String url = "jdbc:mysql://localhost:3306/restaurant_db";
     private static String user = "root";
-    private static String password = "12345";
+    private static String password = "p07112001";
+
     public static Connection getConnection() throws SQLException {
         connection = DriverManager.getConnection(url, user, password);
         return connection;
@@ -21,6 +22,22 @@ public class DdUtil {
             System.out.println("Connected to MySql Server.");
         } catch (SQLException ex) {
             System.out.println("Connection Error!");
+        }
+    }
+
+    public void printSQLException(SQLException ex) {
+        for (Throwable e : ex) {
+            if (e instanceof SQLException) {
+                e.printStackTrace(System.err);
+                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
+                System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+                System.err.println("Message: " + e.getMessage());
+                Throwable t = ex.getCause();
+                while (t != null) {
+                    System.out.println("Cause: " + t);
+                    t = t.getCause();
+                }
+            }
         }
     }
 
