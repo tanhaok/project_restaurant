@@ -27,8 +27,6 @@ CREATE TABLE account(
 CREATE TABLE dining_table(
 	id int NOT NULL AUTO_INCREMENT,
     status nvarchar(255),
-    cust_id int,
-    FOREIGN KEY (cust_id) REFERENCES customer(id),
     PRIMARY KEY (id)
 );
 
@@ -73,3 +71,14 @@ CREATE TABLE invoice(
     PRIMARY KEY (id)
 );
 
+create table booking_table(
+id int NOT NULL AUTO_INCREMENT,
+cust_id int,
+table_id int,
+arrival_date date,
+arrival_time time,
+booking_status nvarchar(255),
+FOREIGN KEY (cust_id) REFERENCES customer(id),
+FOREIGN KEY (table_id) REFERENCES dining_table(id),
+PRIMARY KEY (id)
+);
