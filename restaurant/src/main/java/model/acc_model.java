@@ -1,6 +1,7 @@
 package model;
 
 public class acc_model {
+    private int id;
     private String username;
     private String password;
     private String usertype;
@@ -13,7 +14,21 @@ public class acc_model {
         this.usertype = usertype;
     }
 
+    public acc_model(int id, String username, String password, String usertype) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.usertype = usertype;
+    }
     //Getter and Setter
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;

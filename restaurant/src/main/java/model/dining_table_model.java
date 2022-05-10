@@ -3,17 +3,11 @@ package model;
 public class dining_table_model {
     private int id;
     private String status;
-    private String cust_id;
 
-    //Constructor
-    public dining_table_model(){}
-    public dining_table_model(int id, String status, String cust_id) {
+    public dining_table_model(int id, String status) {
         this.id = id;
         this.status = status;
-        this.cust_id = cust_id;
     }
-
-    //Getter and Setter
 
     public int getId() {
         return id;
@@ -31,20 +25,11 @@ public class dining_table_model {
         this.status = status;
     }
 
-    public String getCust_id() {
-        return cust_id;
-    }
-
-    public void setCust_id(String cust_id) {
-        this.cust_id = cust_id;
-    }
-
     @Override
     public String toString() {
-        return "dining_table_model{" +
+        return "dining_table{" +
                 "id=" + id +
                 ", status='" + status + '\'' +
-                ", cust_id='" + cust_id + '\'' +
                 '}';
     }
 }
