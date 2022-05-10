@@ -13,7 +13,8 @@ public class DdUtil {
     //private static String password = "p07112001";
     private static String password = "12345";
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection(url, user, password);
         return connection;
     }
@@ -21,7 +22,7 @@ public class DdUtil {
     public static void main(String[] args) {
         try (Connection con = DdUtil.getConnection() ) {
             System.out.println("Connected to MySql Server.");
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             System.out.println("Connection Error!");
         }
     }

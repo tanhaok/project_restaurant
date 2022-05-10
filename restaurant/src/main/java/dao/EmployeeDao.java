@@ -35,8 +35,8 @@ public class EmployeeDao {
             preparedStatement.setString(5, empModel.getImg());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            ddUtil.printSQLException(e);
+        } catch (SQLException | ClassNotFoundException e) {
+            ddUtil.printSQLException((SQLException) e);
         }
     }
 
@@ -61,8 +61,8 @@ public class EmployeeDao {
                 String country = rs.getString("img");
                 employee = new emp_model(id, name, address, phone, salary, country);
             }
-        } catch (SQLException e) {
-            ddUtil.printSQLException(e);
+        } catch (SQLException | ClassNotFoundException e) {
+            ddUtil.printSQLException((SQLException) e);
         }
         return employee;
     }
@@ -90,13 +90,13 @@ public class EmployeeDao {
                 String img = rs.getString("img");
                 employees.add(new emp_model(id, name, address, phone, salary, img));
             }
-        } catch (SQLException e) {
-            ddUtil.printSQLException(e);
+        } catch (SQLException | ClassNotFoundException e) {
+            ddUtil.printSQLException((SQLException) e);
         }
         return employees;
     }
 
-    public boolean deleteEmployee(int id) throws SQLException {
+    public boolean deleteEmployee(int id) throws SQLException, ClassNotFoundException {
         boolean rowDeleted;
         try (Connection connection = ddUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_EMPLOYEE_SQL);) {
@@ -107,7 +107,7 @@ public class EmployeeDao {
     }
 
     public boolean updateEmployee(emp_model Employee) throws SQLException {
-        boolean rowUpdated;
+        boolean rowUpdated = false;
         try (Connection connection = ddUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_EMPLOYEE_SQL);) {
             statement.setString(1, Employee.getName());
@@ -118,6 +118,8 @@ public class EmployeeDao {
             statement.setInt(6, Employee.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return rowUpdated;
     }
