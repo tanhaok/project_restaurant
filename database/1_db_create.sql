@@ -27,8 +27,6 @@ CREATE TABLE account(
 CREATE TABLE dining_table(
 	id int NOT NULL AUTO_INCREMENT,
     status nvarchar(255),
-    cust_id int,
-    FOREIGN KEY (cust_id) REFERENCES customer(id),
     PRIMARY KEY (id)
 );
 
