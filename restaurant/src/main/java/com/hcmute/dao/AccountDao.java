@@ -1,12 +1,12 @@
-package dao;
-
-import connection.DdUtil;
-import model.acc_model;
+package com.hcmute.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.hcmute.connection.DdUtil;
+import com.hcmute.model.acc_model;
 
 public class AccountDao {
         Connection connection = null;

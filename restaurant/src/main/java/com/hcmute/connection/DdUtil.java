@@ -1,4 +1,4 @@
-package connection;
+package com.hcmute.connection;
 
 import java.io.FileInputStream;
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package model;
+package com.hcmute.model;
 
 public class product_model {
     private int id;

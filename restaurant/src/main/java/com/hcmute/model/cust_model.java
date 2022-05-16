@@ -1,4 +1,4 @@
-package model;
+package com.hcmute.model;
 
 public class cust_model {
     private int id;

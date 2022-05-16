@@ -1,11 +1,11 @@
-package dao;
-
-import connection.DdUtil;
-import model.booking_table_model;
+package com.hcmute.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import com.hcmute.connection.DdUtil;
+import com.hcmute.model.booking_table_model;
 
 public class BookingTableDao {
     Connection connection = null;

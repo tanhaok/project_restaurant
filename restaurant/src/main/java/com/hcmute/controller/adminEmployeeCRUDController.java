@@ -1,13 +1,14 @@
-package controller;
-import dao.EmployeeDao;
-import model.emp_model;
-
+package com.hcmute.controller;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.hcmute.dao.EmployeeDao;
+import com.hcmute.model.emp_model;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +16,11 @@ import java.util.List;
 
 @WebServlet("/admin-employee.html")
 public class adminEmployeeCRUDController extends HttpServlet {
-    private EmployeeDao employeeDao;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 184984112754305267L;
+	private EmployeeDao employeeDao;
 
     public void init() {
         employeeDao = new EmployeeDao();

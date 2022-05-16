@@ -1,4 +1,4 @@
-package model;
+package com.hcmute.model;
 
 public class dining_table_model {
     private int id;

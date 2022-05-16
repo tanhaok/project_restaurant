@@ -1,7 +1,4 @@
-package dao;
-
-import connection.DdUtil;
-import model.emp_model;
+package com.hcmute.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.hcmute.connection.DdUtil;
+import com.hcmute.model.emp_model;
 
 public class EmployeeDao {
     DdUtil ddUtil;

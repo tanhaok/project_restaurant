@@ -1,4 +1,4 @@
-package model;
+package com.hcmute.model;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -76,16 +76,12 @@ public class booking_table_model {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "booking_table_model{" +
-                "id=" + id +
-                ", cust_id=" + cust_id +
-                ", table_id=" + table_id +
-                ", date=" + date +
-                ", arrival_time=" + arrival_time +
-                ", number_peoples=" + number_peoples +
-                ", status='" + status + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "booking_table_model [id=" + id + ", cust_id=" + cust_id + ", table_id=" + table_id + ", date=" + date
+				+ ", arrival_time=" + arrival_time + ", status=" + status + "]";
+	}
+    
+
+    
 }
