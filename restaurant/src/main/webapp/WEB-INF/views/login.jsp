@@ -13,7 +13,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<c:url value="/resources/css/login-register.css" />">
+    <link rel="stylesheet" href="<c:url value="../resources/css/login-register.css" />">
     <title>Đăng nhập và đăng ký</title>
 </head>
 <body>
