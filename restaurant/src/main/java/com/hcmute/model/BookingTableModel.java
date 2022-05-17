@@ -11,12 +11,11 @@ public class BookingTableModel {
     private Time arrivalTime;
     private String status;
 
-    public BookingTableModel(int cust_id, int table_id, Date date, Time arrival_time, String status) {
+    public BookingTableModel(int cust_id, int table_id, Date date, Time arrival_time) {
         this.cusId = cust_id;
         this.tableId = table_id;
         this.date = date;
         this.arrivalTime = arrival_time;
-        this.status = status;
     }
 
     public BookingTableModel(int id, int cust_id, int table_id, Date date, Time arrival_time, String status) {

@@ -1,60 +1,61 @@
 package com.hcmute.controller.user;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hcmute.model.AccountModel;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hcmute.dao.AccountDao;
-import com.hcmute.model.AccountModel;
+
 
 import java.io.IOException;
 
 @Controller
-public class RegisterController extends HttpServlet {
+public class RegisterController {
     AccountDao dao = new AccountDao();
     @RequestMapping(value= {"/register","/dang-ky"}, method=RequestMethod.GET)
     public String showForm() {
     	return "login";
     }
     @RequestMapping(value= {"/register","/dang-ky"}, method=RequestMethod.POST)
-    public String register() {
-    	return "login";
-    }
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
+    public String register(ModelMap model, HttpServletRequest req) {
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String confirm = req.getParameter("confirm");
+        AccountModel account = new AccountModel(username,password,"user");
+        if(confirm.trim().equals(password.trim()) ){
+            AccountModel acc_model = dao.getAccount(username,password);
+            if(acc_model != null){
+                model.addAttribute("msg","Tài khoản đã tồn tại");
+                model.addAttribute("type","error");
+                return "login";
+            }
+            account = new AccountModel(username,password,"user");
+            Boolean result = dao.insert(account);
+            if(result){
+                model.addAttribute("msg","Đăng ký tài khoản thành công");
+                model.addAttribute("type","success");
+                return "login";
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       String username = req.getParameter("username");
-       String password = req.getParameter("password");
-       String confirm = req.getParameter("confirm");
-       AccountModel account = new AccountModel(username,password,"user");
-       System.out.println(account.toString());
-       String msg = null;
-       if(confirm.trim().equals(password.trim()) ){
-           account = new AccountModel(username,password,"user");
-           System.out.println(account.toString());
-           Boolean result = dao.insert(account);
-           if(result){
-               msg = "Đăng ký tài khoản thành công";
+            }
+            else{
+                model.addAttribute("msg","Vui lòng thử lại");
+                model.addAttribute("type","error");
+                return "login";
+            }
 
-           }
-           else{
-               msg = "Vui lòng thử lại";
-           }
-
-       }
-       else{
-           msg = "Mật khẩu trong trùng khớp";
-       }
-        req.setAttribute("msg",msg);
-        req.getRequestDispatcher("/views/login.jsp").forward(req,resp);
+        }
+        else{
+            model.addAttribute("msg","Vui lòng xác nhận lại mật khẩu");
+            model.addAttribute("type","error");
+            return "login";
+        }
     }
 }

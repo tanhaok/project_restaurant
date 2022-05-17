@@ -11,7 +11,7 @@ import com.hcmute.dao.AccountDao;
 import com.hcmute.model.AccountModel;
 
 @Controller
-public class LoginController extends HttpServlet {
+public class LoginController{
 	AccountDao dao = new AccountDao();
 	@RequestMapping(value= {"/dang-nhap","/login"}, method=RequestMethod.GET)
 	public String showForm() {
@@ -29,6 +29,7 @@ public class LoginController extends HttpServlet {
         }
         else{
         	modelMap.addAttribute("msg", "Tài khoản hoặc mật khẩu không đúng");
+			modelMap.addAttribute("type","error");
         	return "login";
         }
 	}

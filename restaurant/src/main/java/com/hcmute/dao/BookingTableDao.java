@@ -18,6 +18,10 @@ public class BookingTableDao {
                     "values(?,?,?,?,'reserving')";
             connection = DdUtil.getConnection();
             ps = connection.prepareStatement(sql);
+            ps.setInt(1,booking.getCusId());
+            ps.setInt(2,booking.getTableId());
+            ps.setDate(3,booking.getDate());
+            ps.setTime(4,booking.getArrivalTime());
             result = ps.executeUpdate() > 0;
         }catch (Exception e){
             e.printStackTrace();

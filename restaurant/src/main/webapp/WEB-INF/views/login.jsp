@@ -13,7 +13,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<c:url value="../resources/css/login-register.css" />">
+    <link rel="stylesheet" href="<c:url value="/resources/css/login-register.css" />">
     <title>Đăng nhập và đăng ký</title>
 </head>
 <body>
@@ -24,9 +24,14 @@
                     <!--Dang nhap-->
                     <div class="wrapper" id="login">
                         <h5 class="text-center pb-2">Đăng nhập</h5>
-                        <c:if test="${msg != null}">
-                        	<h6 class="alert alert-danger">${msg}</h6>
-                        </c:if>
+                         <c:if test="${msg != null}">
+                             <c:if test="${type == 'error'}">
+                                 <h6 class="alert alert-success">${msg}</h6>
+                             </c:if>
+                            <c:if test="${type == 'success'}">
+                                <h6 class="alert alert-success">${msg}</h6>
+                            </c:if>
+                         </c:if>
                         <form action="<c:url value="/login"/>" method = "POST">
                             <div class="form-group row">
                                 <div class="col-sm-12">

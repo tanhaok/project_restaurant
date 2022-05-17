@@ -4,110 +4,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link
-	href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<title>Order</title>
-<link rel="stylesheet"
-	href="<c:url value="../resources/css/booking-table.css"/>">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="<c:url value="/resources/css/booking-table.css"/>">
+    <title>Quản lý bàn</title>
 </head>
-
 <body>
-	<section id="reservation">
-		<div class="container mt-2 mb-2 ">
-			<h2 class="text-center pt-2 reservation-title">Make a
-				reservation</h2>
-			<!---Form-->
-			<div class="reservation-content">
-				<form class="mt-5" id="form-info">
-					<div class="row">
-						<div class="col-5">
-							<div class="form-group">
-								<label for="fullname">Họ và tên</label> <input type="text"
-									class="form-control" id="fullname">
-							</div>
-							<div class="form-group">
-								<label for="phone">Số điện thoại</label> <input type="tel"
-									class="form-control" id="phone">
-							</div>
-						</div>
-						<div class="col-5">
-							<div class="form-group">
-								<label for="date">Ngày</label> <input type="date"
-									class="form-control" id="date">
-							</div>
-							<div class="form-group">
-								<label for="time">Giờ</label> <input type="time"
-									class="form-control" id="time">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<button class="btn mt-2" id="btn-next">Tiếp tục</button>
-					</div>
-				</form>
-				<!---End Form-->
-				<div id="choose-table">
-					<div class="choose-table-container mt-5 mb-4">
-						<c:forEach items="${listTables}" var="t">
-							<c:choose>
-								<c:when test="${t.getStatus() == 'deactivate'}">
-									<div class="table-item disactive">${t.getId()}</div>
-								</c:when>
-								<c:otherwise>
-									<div class="table-item">${t.getId()}</div>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-					</div>
-					<div class="row">
-						<button class="btn mt-2 mr-4" id="btn-back">Quay về</button>
-						<button class="btn solid col-2 mt-2">Đặt chổ</button>
-					</div>
-				</div>
+    <section id="table-management" class="container d-flex align-content-center flex-column pt-3 pb-3">
+        <h2 class="text-center mt-2 mb-5">Quản lý bàn</h2>
+        <div class="choose-table-container">
+        <c:forEach items="${listTables}" var="t">
+            <c:choose>
+                <c:when test="${t.getStatus() == 'deactivate'}">
+                    <div class="table-item disactive" data-toggle="modal" data-target="#myModal" data-id="${t.getId()}">
+                    ${t.getId()}
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="table-item" data-toggle="modal" data-target="#myModal" data-id="${t.getId()}">
+                    ${t.getId()}
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        </div>
+    </section>
+    <!-- Button trigger modal -->
 
-			</div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin khách hàng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-info" action="/booking-table">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="fullname">Họ và tên</label>
+                                    <input type="text" class="form-control" id="fullname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Số điện thoại</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="date">Ngày</label>
+                                    <input type="date" class="form-control" id="date">
+                                </div>
+                                <div class="form-group">
+                                    <label for="time">Giờ</label>
+                                    <input type="time" class="form-control" id="time">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                        </div>
+                    </form>
+                </div>
 
-		</div>
-
-	</section>
-	<script>
-        const btnNext = document.querySelector("#btn-next");
-        const btnBack = document.querySelector("#btn-back");
+            </div>
+        </div>
+    </div>
+    <!--JS-->
+    <script>
         const formInfo = document.querySelector("#form-info");
-        const listTables = document.querySelectorAll(".table-item");
         formInfo.addEventListener('submit',function(e){
             e.preventDefault();
+            var tableID = document.querySelector('.table-item.selected').dataset.id;
+            var action = formInfo.getAttribute("action");
+            formInfo.setAttribute('action',action+`/${tableID}`);
+            formInfo.submit();
         })
-        const chooseTable = document.querySelector("#choose-table");
-        btnNext.addEventListener('click',function(){
-            formInfo.style.animation = 'floatLeft 0.5s forwards'
-            chooseTable.style.animationDelay = '0.5s';
-            chooseTable.style.animation = 'moveToLeft 0.5s forwards';
-        })
-        btnBack.addEventListener('click',function(){
-            chooseTable.style.animation = 'moveToRight 0.5s forwards';
-            formInfo.style.animationDelay = '0.5s';
-            formInfo.style.animation = 'floatMain 0.5s forwards'
-        })
-        listTables.forEach(function(tableItem,index){
-            tableItem.addEventListener('click',function(){
-                if(!tableItem.classList.contains('disactive')){
-                	const seletedTable = document.querySelector('.table-item.selected');
-                	if(seletedTable != null)
-                		document.querySelector('.table-item.selected').classList.remove('selected');
+        const listTables = document.querySelectorAll(".table-item");
+        listTables.forEach((tableItem, index) => {
+            tableItem.addEventListener('click', () => {
+                if (!tableItem.classList.contains('disactive')) {
+                    var selectedTable = document.querySelector('.table-item.selected');
+                    selectedTable && selectedTable.classList.remove('selected');
                     tableItem.classList.add('selected');
                 }
             })
         })
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
