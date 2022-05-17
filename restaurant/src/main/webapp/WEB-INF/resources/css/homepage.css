@@ -45,7 +45,7 @@ body{
 
 /* header */
 #header{
-    background: url(../images/header.jpg) top/ cover no-repeat;
+    background: url(./resources/images/header.jpg) top/ cover no-repeat;
     width: 100%;
 }
 #header .detail-box {

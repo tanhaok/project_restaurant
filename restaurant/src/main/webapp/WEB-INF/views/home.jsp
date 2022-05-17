@@ -20,7 +20,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #006a31;">
 	<div class="container">
 		<a href="<c:url value="/"/>" class="navbar-brand d-flex justify-content-between align-items-center order-lg-0">
-			<img src="<c:url value="WEB-INF/resources/images/restaurant-logo.png"/>" alt="logo">
+			<img src="<c:url value="/resources/images/restaurant-logo.png"/>" alt="logo">
 			<span class = "text-uppercase fw-lighter ms-2">The Restaurant</span>
 		</a>
 
@@ -198,7 +198,7 @@
 		<div class = "special-list row g-0">
 			<div class = "col-md-6 col-lg-4 col-xl-3 p-2">
 				<div class = "special-img position-relative overflow-hidden">
-					<img src = "<c:url value="WEB-INF/resources/images/placeholder.jpg"/>" class = "w-100" alt="picture">
+					<img src = "<c:url value="/resources/images/placeholder.jpg"/>" class = "w-100" alt="picture">
 				</div>
 				<div class = "text-center">
 					<p class = "text-capitalize mt-3 mb-1">placeholder</p>
@@ -209,7 +209,7 @@
 
 			<div class = "col-md-6 col-lg-4 col-xl-3 p-2">
 				<div class = "special-img position-relative overflow-hidden">
-					<img src = "<c:url value="WEB-INF/resources/images/placeholder.jpg"/>" class = "w-100" alt="picture">
+					<img src = "<c:url value="/resources/images/placeholder.jpg"/>" class = "w-100" alt="picture">
 				</div>
 				<div class = "text-center">
 					<p class = "text-capitalize mt-3 mb-1">placeholder</p>
@@ -220,7 +220,7 @@
 
 			<div class = "col-md-6 col-lg-4 col-xl-3 p-2">
 				<div class = "special-img position-relative overflow-hidden">
-					<img src = "<c:url value="WEB-INF/resources/images/placeholder.jpg"/>" class = "w-100" alt="picture">
+					<img src = "<c:url value="/resources/images/placeholder.jpg"/>" class = "w-100" alt="picture">
 				</div>
 				<div class = "text-center">
 					<p class = "text-capitalize mt-3 mb-1">placeholder</p>
@@ -300,7 +300,7 @@
 				<p>Được thành lập vào năm 2001, The Restaurant bắt đầu mở rộng, phát triển hệ thống cửa hàng và nhượng quyền thương mại quốc tế. Lấy cảm hứng từ phong cách ẩm thực tinh tế của người Ý kết hợp cùng sự am hiểu về sở thích ẩm thực của người châu Á, chúng tôi đem lại cho khách hàng những hương vị thơm ngon, đến từ cả phong cách Đông và Tầy. Đảm bảo thoả mãn cho mọi khách hàng, kể cả những khách hàng khó tính nhất.</p>
 			</div>
 			<div class = "col-lg-6 order-lg-0">
-				<img src = "<c:url value="WEB-INF/resources/images/about_us.jpg"/>" alt = "restaurant picture" class = "img-fluid">
+				<img src = "<c:url value="/resources/images/about_us.jpg"/>" alt = "restaurant picture" class = "img-fluid">
 			</div>
 		</div>
 	</div>

@@ -50,4 +50,18 @@ public class TableDao {
     	List<DiningTableModel> list = getListTable(sql);
     	return list;
     }
+    public boolean updateStatus(DiningTableModel table){
+        Boolean result = false;
+        try{
+            String sql = "update dining_table set status = ? where id=?";
+            connection = DdUtil.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1,table.getStatus());
+            ps.setInt(2,table.getId());
+            result = ps.executeUpdate() > 0;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  result;
+    }
 }

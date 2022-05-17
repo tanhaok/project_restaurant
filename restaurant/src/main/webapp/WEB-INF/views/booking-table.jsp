@@ -20,9 +20,9 @@
         <c:forEach items="${listTables}" var="t">
             <c:choose>
                 <c:when test="${t.getStatus() == 'deactivate'}">
-                    <div class="table-item disactive" data-toggle="modal" data-target="#myModal" data-id="${t.getId()}">
+                    <a href="<c:url value="/booking-table/cancel/${t.getId()}"/>" class="table-item deactivate"  data-id="${t.getId()}">
                     ${t.getId()}
-                    </div>
+                    </a>
                 </c:when>
                 <c:otherwise>
                     <div class="table-item" data-toggle="modal" data-target="#myModal" data-id="${t.getId()}">
@@ -47,26 +47,26 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="form-info" action="/booking-table">
+                    <form id="form-info" action="<c:url value="/booking-table"/>" method="POST">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="fullname">Họ và tên</label>
-                                    <input type="text" class="form-control" id="fullname">
+                                    <input type="text" class="form-control" name="fullname">
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Số điện thoại</label>
-                                    <input type="tel" class="form-control" id="phone">
+                                    <input type="tel" class="form-control" name="phone">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="date">Ngày</label>
-                                    <input type="date" class="form-control" id="date">
+                                    <input type="date" class="form-control" name="date">
                                 </div>
                                 <div class="form-group">
                                     <label for="time">Giờ</label>
-                                    <input type="time" class="form-control" id="time">
+                                    <input type="time" class="form-control" name="time">
                                 </div>
                             </div>
                         </div>
@@ -81,28 +81,43 @@
         </div>
     </div>
     <!--JS-->
+    <script
+    	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         const formInfo = document.querySelector("#form-info");
         formInfo.addEventListener('submit',function(e){
             e.preventDefault();
-            var tableID = document.querySelector('.table-item.selected').dataset.id;
+            var id = document.querySelector('.table-item.selected').dataset.id;
             var action = formInfo.getAttribute("action");
-            formInfo.setAttribute('action',action+`/${tableID}`);
+            var newAction = action +"/"+id;
+            formInfo.setAttribute('action',newAction);
             formInfo.submit();
         })
         const listTables = document.querySelectorAll(".table-item");
         listTables.forEach((tableItem, index) => {
             tableItem.addEventListener('click', () => {
-                if (!tableItem.classList.contains('disactive')) {
+                if (!tableItem.classList.contains('deactivate')) {
                     var selectedTable = document.querySelector('.table-item.selected');
                     selectedTable && selectedTable.classList.remove('selected');
                     tableItem.classList.add('selected');
                 }
             })
         })
+
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+        crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"
+        type="text/javascript"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
