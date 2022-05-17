@@ -1,6 +1,6 @@
 package com.hcmute.model;
 
-public class emp_model {
+public class EmployeeModel {
     private int id;
     private String name;
     private String address;
@@ -9,9 +9,9 @@ public class emp_model {
     private String img;
 
     //constructor
-    public emp_model(){
+    public EmployeeModel(){
     }
-    public emp_model(int id, String name, String address, String phone, int salary, String img){
+    public EmployeeModel(int id, String name, String address, String phone, int salary, String img){
         this.id = id;
         this.name = name;
         this.address = address;

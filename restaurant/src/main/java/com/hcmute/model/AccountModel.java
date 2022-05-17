@@ -1,20 +1,20 @@
 package com.hcmute.model;
 
-public class acc_model {
+public class AccountModel {
     private int id;
     private String username;
     private String password;
     private String usertype;
 
     //Constructor
-    public acc_model(){}
-    public acc_model(String username, String password, String usertype) {
+    public AccountModel(){}
+    public AccountModel(String username, String password, String usertype) {
         this.username = username;
         this.password = password;
         this.usertype = usertype;
     }
 
-    public acc_model(int id, String username, String password, String usertype) {
+    public AccountModel(int id, String username, String password, String usertype) {
         this.id = id;
         this.username = username;
         this.password = password;

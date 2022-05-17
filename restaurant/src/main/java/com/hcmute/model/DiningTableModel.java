@@ -1,10 +1,10 @@
 package com.hcmute.model;
 
-public class dining_table_model {
+public class DiningTableModel {
     private int id;
     private String status;
 
-    public dining_table_model(int id, String status) {
+    public DiningTableModel(int id, String status) {
         this.id = id;
         this.status = status;
     }

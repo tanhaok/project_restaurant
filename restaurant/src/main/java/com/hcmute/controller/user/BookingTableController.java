@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hcmute.dao.TableDao;
-import com.hcmute.model.dining_table_model;
+import com.hcmute.model.DiningTableModel;
 
 @Controller
 public class BookingTableController {
 	TableDao dao = new TableDao();
 	@RequestMapping(value= {"/booking-table","/dat-cho"},method=RequestMethod.GET)
 	public String showListTable(ModelMap model) {
-		List<dining_table_model> list = dao.getAll();
+		List<DiningTableModel> list = dao.getAll();
 		model.addAttribute("listTables",list);
 		return "booking-table";
 	}

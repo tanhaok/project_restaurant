@@ -1,6 +1,6 @@
 package com.hcmute.model;
 
-public class product_model {
+public class ProductModel {
     private int id;
     private String name;
     private String description;
@@ -10,8 +10,8 @@ public class product_model {
     private int cate_id;
 
     //Constructor
-    public product_model(){}
-    public product_model(int id, String name, String description, String img, int price, int amount, int cate_id) {
+    public ProductModel(){}
+    public ProductModel(int id, String name, String description, String img, int price, int amount, int cate_id) {
         this.id = id;
         this.name = name;
         this.description = description;

@@ -16,7 +16,7 @@
 	crossorigin="anonymous">
 <title>Order</title>
 <link rel="stylesheet"
-	href="<c:url value="/resources/css/booking-table.css"/>">
+	href="<c:url value="../resources/css/booking-table.css"/>">
 </head>
 
 <body>

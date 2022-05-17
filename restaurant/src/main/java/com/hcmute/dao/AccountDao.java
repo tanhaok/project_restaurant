@@ -3,17 +3,16 @@ package com.hcmute.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import com.hcmute.connection.DdUtil;
-import com.hcmute.model.acc_model;
+import com.hcmute.utils.DdUtil;
+import com.hcmute.model.AccountModel;
 
 public class AccountDao {
         Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        public acc_model getAccount(String username,String password){
-            acc_model account = null;
+        public AccountModel getAccount(String username, String password){
+            AccountModel account = null;
             try {
                 String sql = "select *from account where username = ? and password = ?";
                 connection = DdUtil.getConnection();
@@ -22,7 +21,7 @@ public class AccountDao {
                 ps.setString(2,password);
                 rs = ps.executeQuery();
                 while ((rs.next())){
-                    account = new acc_model();
+                    account = new AccountModel();
                     account.setUsername(rs.getString(1));
                     account.setPassword(rs.getString(2));
                     account.setUsertype(rs.getString(3));
@@ -34,7 +33,7 @@ public class AccountDao {
             }
             return  account;
         }
-        public Boolean insert(acc_model account){
+        public Boolean insert(AccountModel account){
             Boolean result = false;
             try {
                 String sql = "insert into account (username,password,usertype) values(?,?,?)";
@@ -49,7 +48,7 @@ public class AccountDao {
             }
             return  result;
         }
-        public void update(acc_model acc){
+        public void update(AccountModel acc){
             try {
                 String sql = "update account set username=?, password = ? \n" +
                         "where id=?";
@@ -65,7 +64,7 @@ public class AccountDao {
         }
 
     public static void main(String[] args) {
-        acc_model model = new acc_model("test","123","user");
+        AccountModel model = new AccountModel("test","123","user");
         AccountDao dao = new AccountDao();
         Boolean r = dao.insert(model);
         System.out.println(r.toString());

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hcmute.dao.EmployeeDao;
-import com.hcmute.model.emp_model;
+import com.hcmute.model.EmployeeModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -63,7 +63,7 @@ public class adminEmployeeCRUDController extends HttpServlet {
 
     private void listEmployee(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<emp_model> listEmployee = employeeDao.selectAllEmployee();
+        List<EmployeeModel> listEmployee = employeeDao.selectAllEmployee();
         request.setAttribute("listUser", listEmployee);
         RequestDispatcher dispatcher = request.getRequestDispatcher("employee-list.jsp");
         dispatcher.forward(request, response);

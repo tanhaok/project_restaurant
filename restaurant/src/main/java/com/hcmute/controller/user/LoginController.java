@@ -1,7 +1,5 @@
 package com.hcmute.controller.user;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import org.springframework.stereotype.Controller;
@@ -10,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hcmute.dao.AccountDao;
-import com.hcmute.model.acc_model;
-
-import java.io.IOException;
+import com.hcmute.model.AccountModel;
 
 @Controller
 public class LoginController extends HttpServlet {
@@ -25,7 +21,7 @@ public class LoginController extends HttpServlet {
 	public String login(ModelMap modelMap,HttpServletRequest req) {
 		String username = req.getParameter("username");
         String password = req.getParameter("password");
-        acc_model account = dao.getAccount(username,password);
+        AccountModel account = dao.getAccount(username,password);
         if(account != null){
             HttpSession session = req.getSession(true);
             session.setAttribute("account",account);

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hcmute.connection.DdUtil;
-import com.hcmute.model.emp_model;
+import com.hcmute.utils.DdUtil;
+import com.hcmute.model.EmployeeModel;
 
 public class EmployeeDao {
     DdUtil ddUtil;
@@ -23,7 +23,7 @@ public class EmployeeDao {
     public EmployeeDao() {}
 
 
-    public void insertEmployee(emp_model empModel) throws SQLException {
+    public void insertEmployee(EmployeeModel empModel) throws SQLException {
         System.out.println(INSERT_EMPLOYEE_SQL);
         // try-with-resource statement will auto close the connection.
         try (Connection connection = ddUtil.getConnection();
@@ -41,8 +41,8 @@ public class EmployeeDao {
     }
 
 
-    public emp_model selectEmployee(int id) {
-        emp_model employee = null;
+    public EmployeeModel selectEmployee(int id) {
+        EmployeeModel employee = null;
         // Step 1: Establishing a Connection
         try (Connection connection = ddUtil.getConnection();
              // Step 2:Create a statement using connection object
@@ -59,7 +59,7 @@ public class EmployeeDao {
                 String phone = rs.getString("phone");
                 int salary = rs.getInt("salary");
                 String country = rs.getString("img");
-                employee = new emp_model(id, name, address, phone, salary, country);
+                employee = new EmployeeModel(id, name, address, phone, salary, country);
             }
         } catch (SQLException | ClassNotFoundException e) {
             ddUtil.printSQLException((SQLException) e);
@@ -67,10 +67,10 @@ public class EmployeeDao {
         return employee;
     }
 
-    public List<emp_model> selectAllEmployee() {
+    public List<EmployeeModel> selectAllEmployee() {
 
         // using try-with-resources to avoid closing resources (boiler plate code)
-        List<emp_model> employees = new ArrayList<>();
+        List<EmployeeModel> employees = new ArrayList<>();
         // Step 1: Establishing a Connection
         try (Connection connection = ddUtil.getConnection();
 
@@ -88,7 +88,7 @@ public class EmployeeDao {
                 String phone = rs.getString("phone");
                 int salary = rs.getInt("salary");
                 String img = rs.getString("img");
-                employees.add(new emp_model(id, name, address, phone, salary, img));
+                employees.add(new EmployeeModel(id, name, address, phone, salary, img));
             }
         } catch (SQLException | ClassNotFoundException e) {
             ddUtil.printSQLException((SQLException) e);
@@ -106,7 +106,7 @@ public class EmployeeDao {
         return rowDeleted;
     }
 
-    public boolean updateEmployee(emp_model Employee) throws SQLException {
+    public boolean updateEmployee(EmployeeModel Employee) throws SQLException {
         boolean rowUpdated = false;
         try (Connection connection = ddUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_EMPLOYEE_SQL);) {

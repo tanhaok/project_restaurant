@@ -1,6 +1,6 @@
 package com.hcmute.model;
 
-public class cust_model {
+public class CustomerModel {
     private int id;
     private String name;
     private String address;
@@ -8,9 +8,9 @@ public class cust_model {
     private String img;
 
     //Constructor
-    public cust_model(){
+    public CustomerModel(){
     }
-    public cust_model(int id, String name, String address, String phone, String img) {
+    public CustomerModel(int id, String name, String address, String phone, String img) {
         this.id = id;
         this.name = name;
         this.address = address;

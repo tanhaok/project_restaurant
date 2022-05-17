@@ -6,15 +6,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hcmute.connection.DdUtil;
-import com.hcmute.model.dining_table_model;
+import com.hcmute.utils.DdUtil;
+import com.hcmute.model.DiningTableModel;
 
 public class TableDao {
     Connection connection = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    public dining_table_model getTable(int id){
-        dining_table_model table = null;
+    public DiningTableModel getTable(int id){
+        DiningTableModel table = null;
         try{
             String sql = "select * from dining_table where id = ?";
             connection = DdUtil.getConnection();
@@ -22,7 +22,7 @@ public class TableDao {
             ps.setInt(1,id);
             rs = ps.executeQuery();
             while (rs.next()){
-                table = new dining_table_model(rs.getInt(1),rs.getString(2));
+                table = new DiningTableModel(rs.getInt(1),rs.getString(2));
                 return  table;
             }
         }catch (Exception e){
@@ -30,14 +30,14 @@ public class TableDao {
         }
         return table;
     }
-    public List<dining_table_model> getListTable(String sql){
-        List<dining_table_model> list = new ArrayList<>();
+    public List<DiningTableModel> getListTable(String sql){
+        List<DiningTableModel> list = new ArrayList<>();
         try{
             connection = DdUtil.getConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery(sql);
             while (rs.next()){
-                dining_table_model table_model = new dining_table_model(rs.getInt(1),rs.getString(2));
+                DiningTableModel table_model = new DiningTableModel(rs.getInt(1),rs.getString(2));
                 list.add(table_model);
             }
         }catch (Exception e){
@@ -45,9 +45,9 @@ public class TableDao {
         }
         return  list;
     }
-    public List<dining_table_model> getAll(){
+    public List<DiningTableModel> getAll(){
     	String sql = "select * from dining_table";
-    	List<dining_table_model> list = getListTable(sql);
+    	List<DiningTableModel> list = getListTable(sql);
     	return list;
     }
 }
