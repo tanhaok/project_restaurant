@@ -82,3 +82,12 @@ FOREIGN KEY (cust_id) REFERENCES customer(id),
 FOREIGN KEY (table_id) REFERENCES dining_table(id),
 PRIMARY KEY (id)
 );
+
+create table comment(
+	id int not null auto_increment primary key,
+    cusId int,
+    productId int,
+    comment nvarchar(500),
+    foreign key (cusId) references customer(id),
+    foreign key (productId) references product(id)	
+);
