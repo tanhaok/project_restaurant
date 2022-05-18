@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.hcmute.utils.DdUtil;
+import com.hcmute.utils.DbUtil;
 import com.hcmute.model.BookingTableModel;
 
 public class BookingTableDao {
@@ -16,7 +16,7 @@ public class BookingTableDao {
         try {
             String sql ="insert into booking_table (cust_id,table_id,arrival_date,arrival_time,booking_status) \n" +
                     "values(?,?,?,?,'reserving')";
-            connection = DdUtil.getConnection();
+            connection = DbUtil.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setInt(1,booking.getCusId());
             ps.setInt(2,booking.getTableId());

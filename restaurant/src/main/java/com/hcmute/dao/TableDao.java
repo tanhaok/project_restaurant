@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hcmute.utils.DdUtil;
+import com.hcmute.utils.DbUtil;
 import com.hcmute.model.DiningTableModel;
 
 public class TableDao {
@@ -17,7 +17,7 @@ public class TableDao {
         DiningTableModel table = null;
         try{
             String sql = "select * from dining_table where id = ?";
-            connection = DdUtil.getConnection();
+            connection = DbUtil.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setInt(1,id);
             rs = ps.executeQuery();
@@ -33,7 +33,7 @@ public class TableDao {
     public List<DiningTableModel> getListTable(String sql){
         List<DiningTableModel> list = new ArrayList<>();
         try{
-            connection = DdUtil.getConnection();
+            connection = DbUtil.getConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery(sql);
             while (rs.next()){
@@ -54,7 +54,7 @@ public class TableDao {
         Boolean result = false;
         try{
             String sql = "update dining_table set status = ? where id=?";
-            connection = DdUtil.getConnection();
+            connection = DbUtil.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1,table.getStatus());
             ps.setInt(2,table.getId());

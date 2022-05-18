@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hcmute.utils.DdUtil;
+import com.hcmute.utils.DbUtil;
 import com.hcmute.model.EmployeeModel;
 
 public class EmployeeDao {
-    DdUtil ddUtil;
+    DbUtil ddUtil;
     private static final String INSERT_EMPLOYEE_SQL = "INSERT INTO employee" + "  (name, address, phone, salary, img ) VALUES "
             + " (?, ?, ?, ?, ?);";
 

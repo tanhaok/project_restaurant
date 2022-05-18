@@ -1,7 +1,7 @@
 package com.hcmute.dao;
 
 import com.hcmute.model.CustomerModel;
-import com.hcmute.utils.DdUtil;
+import com.hcmute.utils.DbUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ public class CustomerDao {
         int id = 0;
         try{
             String sql = "insert into customer(name,address,phone,img) value(?,?,?,?)";
-            connection = DdUtil.getConnection();
+            connection = DbUtil.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1,customer.getName());
             ps.setString(2,customer.getAddress());
@@ -34,7 +34,7 @@ public class CustomerDao {
     public int getNewestID(){
         try{
             String sql = "select id from customer order by id desc";
-            connection = DdUtil.getConnection();
+            connection = DbUtil.getConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()){
