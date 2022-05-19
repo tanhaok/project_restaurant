@@ -56,7 +56,17 @@
 					<a class = "nav-link text-uppercase text-light" href = "#about">Về chúng tôi</a>
 				</li>
 				<li class = "nav-item px-2 py-2 border-0">
-					<a class = "nav-link text-uppercase text-light" href = "<c:url value="/login"/>">Đăng nhập/Đăng ký</a>
+					<c:choose>
+						<c:when test="${sessionScope.account != null}">
+							<p class="nav-link text-uppercase text-light">
+								<c:out value="${sessionScope.account.username}" /></p>
+						</c:when>
+					</c:choose>
+					<c:choose>
+						<c:when test="${sessionScope.account == null}">
+							<a class = "nav-link text-uppercase text-light" href = "<c:url value="/login"/>">Đăng nhập/Đăng ký</a>
+						</c:when>
+					</c:choose>
 				</li>
 			</ul>
 		</div>

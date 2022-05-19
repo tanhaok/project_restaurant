@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hcmute.dao.AccountDao;
 import com.hcmute.model.AccountModel;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class LoginController{
@@ -17,20 +18,21 @@ public class LoginController{
 	public String showForm() {
 		return "login";	
 	}
+
 	@RequestMapping(value= {"/dang-nhap","/login"}, method=RequestMethod.POST)
-	public String login(ModelMap modelMap,HttpServletRequest req) {
+	public RedirectView login(ModelMap modelMap,HttpServletRequest req) {
 		String username = req.getParameter("username");
         String password = req.getParameter("password");
         AccountModel account = dao.getAccount(username,password);
         if(account != null){
             HttpSession session = req.getSession(true);
-            session.setAttribute("account",account);
-            return "home";
+			session.setAttribute("account",account);
+            return new RedirectView("trang-chu");
         }
         else{
         	modelMap.addAttribute("msg", "Tài khoản hoặc mật khẩu không đúng");
 			modelMap.addAttribute("type","error");
-        	return "login";
+        	return new RedirectView("login");
         }
 	}
 }
