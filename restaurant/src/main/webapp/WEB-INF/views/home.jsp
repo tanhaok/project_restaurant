@@ -9,11 +9,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Nhà Hàng</title>
 	<!-- Bootstrap css -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<!-- Font awesome cdn -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- custom css -->
-	<link rel="stylesheet" href="<c:url value="/WEB-INF/resources/css/homepage.css"/>">
+	<link rel="stylesheet" href="<c:url value="../resources/css/homepage.css"/>">
 </head>
 <body>
 <!-- navbar -->
@@ -44,10 +44,10 @@
 		<div class = "collapse navbar-collapse order-lg-1" id = "navMenu">
 			<ul class = "navbar-nav mx-auto text-center">
 				<li class = "nav-item px-2 py-2">
-					<a class = "nav-link text-uppercase text-light" href = "#header">Home</a>
+					<a class = "nav-link text-uppercase text-light" href = "/">Home</a>
 				</li>
 				<li class = "nav-item px-2 py-2">
-					<a class = "nav-link text-uppercase text-light" href = "">Menu</a>
+					<a class = "nav-link text-uppercase text-light" href = "/menu">Menu</a>
 				</li>
 				<li class = "nav-item px-2 py-2">
 					<a class = "nav-link text-uppercase text-light" href = "<c:url value="/dat-cho"/>">Đặt bàn</a>
