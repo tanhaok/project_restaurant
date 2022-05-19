@@ -35,4 +35,14 @@ public class LoginController{
         	return new RedirectView("login");
         }
 	}
+	@RequestMapping(value = {"/dang-xuat","/logout"}, method = RequestMethod.GET)
+	public String Logout(HttpServletRequest req){
+		HttpSession session = req.getSession(false);
+		session.getAttribute("account");
+		if(session != null){
+			session.removeAttribute("account");
+		}
+		String redirectUrl = "/dang-nhap";
+		return "redirect:" + redirectUrl;
+	}
 }
