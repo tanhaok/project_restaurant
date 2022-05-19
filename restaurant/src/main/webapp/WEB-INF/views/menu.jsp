@@ -89,9 +89,6 @@
             <button type="button" class="btn position-relative">
                 <i class="fa-solid fa-user" style="color: #fff"></i>
             </button>
-            <button type="button" class="btn position-relative">
-                <i class="fa fa-search" style="color: #fff"></i>
-            </button>
         </div>
 
         <button class = "navbar-toggler border-0" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navMenu">

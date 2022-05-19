@@ -15,6 +15,7 @@ public class ProductDao {
     private PreparedStatement ps;
     private static final String GET_ALL_PRODUCT_SQL = "SELECT * FROM `restaurant_db`.`product`;";
     private static final String GET_PRODUCT_BY_ID_SQL = "select * from `restaurant_db`.`product`where product.id = ?";
+    private static final String GET_8_NEWEST_PRODUCTS = "select * from `restaurant_db`.`product` order by product.id desc limit 8";
 
     public ProductDao(){
 
@@ -38,9 +39,7 @@ public class ProductDao {
 
                 result.add(new ProductModel(id, name, des, img, price, amount, cate_id));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return result;
@@ -62,13 +61,35 @@ public class ProductDao {
                 product.setAmount(rs.getInt("amount"));
                 product.setCate_id(rs.getInt("cate_id"));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         return product;
+    }
+
+    public List<ProductModel>  get8NewestProducts() {
+        List<ProductModel> result = null;
+        try {
+            connection = DbUtil.getConnection();
+            ps = connection.prepareStatement(GET_8_NEWEST_PRODUCTS);
+            ResultSet rs = ps.executeQuery();
+            result = new ArrayList<>();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String des = rs.getString("Description");
+                String img = rs.getString("img");
+                int price = rs.getInt("price");
+                int amount = rs.getInt("amount");
+                int cate_id = rs.getInt("cate_id");
+
+                result.add(new ProductModel(id, name, des, img, price, amount, cate_id));
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }

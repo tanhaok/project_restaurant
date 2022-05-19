@@ -44,10 +44,6 @@ body{
 }
 
 /* header */
-#header{
-    background: url(./resources/images/header.jpg) top/ cover no-repeat;
-    width: 100%;
-}
 #header .detail-box {
     color: #ffffff;
     margin-bottom: 145px;
@@ -98,7 +94,7 @@ body{
             transform: scale(1.2);
 }
 .py-5 h2 {
-    font-family: open sans;
+    font-family: open sans, serif;
     font-weight: 800;
     font-size: 36px;
 }
