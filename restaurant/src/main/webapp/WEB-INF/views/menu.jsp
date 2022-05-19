@@ -26,6 +26,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css -->
     <link rel="stylesheet" href="<c:url value="../resources/css/homepage.css"/>">
+    <style>
+        .show{
+            display: flex;
+            flex-direction: column;
+            height: max-content;
+        }
+        .show-product{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .content-product{
+            display: flex;
+            width: 20%;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .show-comment{
+            height: 50%;
+            font-size: smaller;
+            font-style: italic;
+            background-color: #fff8ea;
+            padding: 1rem;
+            justify-content: space-between;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-product > img{
+            border-radius: 9px;
+        }
+
+        #input_comment{
+            border-radius: 99px;
+            padding: 2px;
+        }
+        #input_comment:focus{
+            outline: 0;
+        }
+
+        #send_comment{
+            border-radius: 9px;
+            background-color: #8effff;
+        }
+    </style>
 </head>
 <body>
 <!-- navbar -->
@@ -56,7 +101,7 @@
         <div class = "collapse navbar-collapse order-lg-1" id = "navMenu">
             <ul class = "navbar-nav mx-auto text-center">
                 <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-light" href = "#header">Home</a>
+                    <a class = "nav-link text-uppercase text-light" href = "/">Home</a>
                 </li>
                 <li class = "nav-item px-2 py-2">
                     <a class = "nav-link text-uppercase text-light" href = "/menu">Menu</a>
@@ -104,7 +149,7 @@
                         <div class = "text-center">
                             <p class = "text-capitalize mt-3 mb-1"><%=product.getName()%></p>
                             <span class = "fw-bold d-block"><%=product.getPrice()%>đ</span>
-                            <a href = "/menu/view-product/<%=product.getId()%>" class = "btn btn-primary mt-3">View More</a>
+                            <a href = "/view-product/<%=product.getId()%>" class = "btn btn-primary mt-3">View More</a>
                         </div>
                     </div>
                     <%}%>
@@ -126,36 +171,59 @@
                     <h2 class = "position-relative d-inline-block text-uppercase"><%=product.getName().toUpperCase()%></h2>
                 </div>
 
-                <div class = "special-list row g-0">
+                <div class = "show">
 
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2">
-                        <div class = "special-img position-relative overflow-hidden">
+                    <div class = "show-product">
+                        <div class = "image-product">
                             <img src = "<%=product.getImg()%>" class = "w-100" alt="picture">
                         </div>
-                        <div class = "text-center">
-                            <p class = "text-capitalize mt-3 mb-1"><%=product.getName()%></p>
-                            <span class = "fw-bold d-block"><%=product.getPrice()%>đ</span>
-                            <a href = "#" class = "btn btn-primary mt-3">Add To Basket</a>
+                        <div class = "content-product">
+                            <div>
+                                <p class = "text-capitalize mt-3 mb-1"><%=product.getName()%></p>
+                                <span class = "fw-bold d-block"><%=product.getPrice()%> đ</span>
+                                <span class = "text-capitalize mt-3 mb-1"><%=product.getDescription()%></span>
+                            </div>
+                            <div>
+                                <a href = "#" class = "btn btn-primary mt-3">Add To Basket</a>
+                            </div>
+
+                            <div class = "show-comment">
+
+
+
+                                <div class = "comment">
+                                    <%
+                                        List<CommentModel> comments = (List<CommentModel>) request.getAttribute("comments");
+                                        for(CommentModel comment: comments){%>
+                                    <p class = "text-capitalize mt-3 mb-1"><%=comment.getComment()%></p>
+                                    <%}%>
+                                </div>
+
+
+                                <div>
+                                    <input type="text" id="input_comment" placeholder="your comment" />
+                                    <button id="send_comment" onclick="sendComment()">Send</button>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
+
+
                 </div>
 
-                <div class = "special-list row g-0">
 
-                    <%
-                        List<CommentModel> comments = (List<CommentModel>) request.getAttribute("comments");
-                        for(CommentModel comment: comments){%>
-
-                            <div class = "text-center">
-                                <p class = "text-capitalize mt-3 mb-1"><%=comment.getComment()%></p>
-                            </div>
-                    <%}%>
-                </div>
 
             </div>
         </section>
     </c:when>
 </c:choose>
 
+<script>
+    function  sendComment(){
+        alert("Click")
+    }
+</script>
 </body>
 </html>

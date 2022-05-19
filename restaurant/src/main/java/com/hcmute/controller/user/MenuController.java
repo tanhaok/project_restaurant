@@ -24,7 +24,7 @@ public class MenuController {
         return "menu";
     }
 
-    @RequestMapping(value = {"/menu/view-product/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/view-product/{id}"}, method = RequestMethod.GET)
     public String getProduct(HttpServletRequest req, @PathVariable int id){
         ProductDao dao = new ProductDao();
         CommentDao commentDao = new CommentDao();
