@@ -22,7 +22,7 @@ public class HomeController {
         return "home";
     }
     @RequestMapping(value = {"/", "/trang-chu"}, method = RequestMethod.GET)
-    public String get4New(HttpServletRequest req){
+    public String get8New(HttpServletRequest req){
         ProductDao dao = new ProductDao();
         List<ProductModel> list = dao.get8NewestProducts();
         req.setAttribute("list8NewestProducts", list);

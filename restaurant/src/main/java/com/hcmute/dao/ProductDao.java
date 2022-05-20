@@ -22,7 +22,7 @@ public class ProductDao {
     }
 
     public List<ProductModel>  getAllProduct() {
-        List<ProductModel> result = null;
+        List<ProductModel> result = new ArrayList<>();
         try {
             connection = DbUtil.getConnection();
             ps = connection.prepareStatement(GET_ALL_PRODUCT_SQL);
@@ -69,7 +69,7 @@ public class ProductDao {
     }
 
     public List<ProductModel>  get8NewestProducts() {
-        List<ProductModel> result = null;
+        List<ProductModel> result = new ArrayList<>();
         try {
             connection = DbUtil.getConnection();
             ps = connection.prepareStatement(GET_8_NEWEST_PRODUCTS);
@@ -90,6 +90,7 @@ public class ProductDao {
             e.printStackTrace();
         }
         return result;
+
     }
 
 }
