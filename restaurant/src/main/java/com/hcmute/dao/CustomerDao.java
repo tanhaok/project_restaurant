@@ -62,4 +62,20 @@ public class CustomerDao {
         }
         return 0;
     }
+
+    public int getIdByName(String username){
+        try{
+            String sql = "select id from customer where name = ?";
+            connection = DbUtil.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                return rs.getInt("id");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }
