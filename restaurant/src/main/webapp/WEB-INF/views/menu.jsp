@@ -3,7 +3,7 @@
 <%@ page import="com.hcmute.model.CommentModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.hcmute.model.AccountModel" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: hao_n
@@ -93,8 +93,8 @@
             <c:choose>
                 <c:when test="${sessionScope.account != null}">
                     <button type="button" class="btn position-relative">
-                        <a href="#"><i class="fa fa-shopping-cart" style="color: #fff"></i></a>
-                        <span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">0</span>
+                        <a href="${pageContext.request.contextPath}/cart/view/${sessionScope.account.customer_id}"><i class="fa fa-shopping-cart" style="color: #fff"></i></a>
+                        <span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">${sessionScope.totalAmount}</span>
                     </button>
                 </c:when>
             </c:choose>
@@ -187,7 +187,10 @@
                         </div>
                         <div class = "text-center">
                             <p class = "text-capitalize mt-3 mb-1"><%=product.getName()%></p>
-                            <span class = "fw-bold d-block"><%=product.getPrice()%>đ</span>
+                            <span class = "fw-bold d-block">
+                                <fmt:formatNumber type="number" maxFractionDigits="3" value="<%=product.getPrice()%>"/> đ
+
+                            </span>
                             <a href = "/view-product/<%=product.getId()%>" class = "btn btn-primary mt-3">View More</a>
                         </div>
                     </div>
@@ -223,7 +226,7 @@
                                 <span class = "text-capitalize mt-3 mb-1"><%=product.getDescription()%></span>
                             </div>
                             <div>
-                                <a href = "#" class = "btn btn-primary mt-3">Add To Basket</a>
+                                <a href = "${pageContext.request.contextPath}/cart/add/<%=product.getId()%>" class = "btn btn-primary mt-3">Add To Basket</a>
                             </div>
 
                             <div class = "show-comment">
