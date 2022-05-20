@@ -2,6 +2,7 @@
 <%@ page import="com.hcmute.model.ProductModel" %>
 <%@ page import="com.hcmute.model.CommentModel" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.hcmute.model.AccountModel" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -47,11 +48,13 @@
             height: 50%;
             font-size: smaller;
             font-style: italic;
-            background-color: #fff8ea;
+            background-color: #fffcf8;
             padding: 1rem;
             justify-content: space-between;
             display: flex;
             flex-direction: column;
+            overflow-y: scroll;
+            width: 100%;
         }
 
         .image-product > img{
@@ -69,6 +72,11 @@
         #send_comment{
             border-radius: 9px;
             background-color: #8effff;
+        }
+        form{
+            margin-top: 1rem;
+            position: fixed;
+            background-color: #fffcf8;
         }
     </style>
 </head>
@@ -198,8 +206,21 @@
 
 
                                 <div>
-                                    <input type="text" id="input_comment" placeholder="your comment" />
-                                    <button id="send_comment" onclick="sendComment()">Send</button>
+                                    <% AccountModel account = (AccountModel) session.getAttribute("account"); %>
+                                    <c:choose>
+                                        <c:when test="${sessionScope.account == null}">
+                                            <p>Login to write comment</p>
+                                        </c:when>
+                                    </c:choose>
+                                    <c:choose>
+                                        <c:when test="${sessionScope.account != null}">
+                                            <form action="/insert-comment/<%=account.getId()%>/<%=product.getId()%>" method="POST">
+                                                <input type="text" id="input_comment" name="content" placeholder="your comment" />
+                                                <button id="send_comment" type="submit">Send</button>
+                                            </form>
+                                        </c:when>
+                                    </c:choose>
+
                                 </div>
 
                             </div>
@@ -217,10 +238,5 @@
     </c:when>
 </c:choose>
 
-<script>
-    function  sendComment(){
-        alert("Click")
-    }
-</script>
 </body>
 </html>
