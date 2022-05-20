@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping
 public class BookingTableController {
 	TableDao tableDao = new TableDao();
 	BookingTableDao bookingTableDao = new BookingTableDao();
@@ -34,14 +33,14 @@ public class BookingTableController {
 	public String showListTable(ModelMap model) {
 		List<DiningTableModel> list = tableDao.getAll();
 		model.addAttribute("listTables",list);
-		return "booking-table";
+		return "admin/booking-table";
 	}
 	@RequestMapping(value = {"/danh-sach-dat-ban","list-booked-table"})
 	public String getListBookedTable(ModelMap modelMap){
 		List<BookingTableModel> listBooking = bookingTableDao.getAll();
 		HashMap<CustomerModel,BookingTableModel> list = getListBookedTable(listBooking);
 		modelMap.addAttribute("listBooking",list);
-		return "list-booked-table";
+		return "admin/list-booked-table";
 	}
 
 	@RequestMapping(value= {"/booking-table/{tableID}"},method=RequestMethod.POST)
@@ -92,7 +91,7 @@ public class BookingTableController {
 		List<BookingTableModel> listBooking = bookingTableDao.seachByCustomerPhone(phone);
 		HashMap<CustomerModel,BookingTableModel> list = getListBookedTable(listBooking);
 		modelMap.addAttribute("listBooking",list);
-		return "list-booked-table";
+		return "admin/list-booked-table";
 	}
 
 	public HashMap<CustomerModel,BookingTableModel> getListBookedTable(List<BookingTableModel> listBooking){
