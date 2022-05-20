@@ -15,7 +15,7 @@ public class AccountDao {
     public AccountModel getAccount(String username, String password) {
         AccountModel account = null;
         try {
-            String sql = "select *from account where username = ? and password = ?";
+            String sql = "select * from account where username = ? and password = ?";
             connection = DbUtil.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1, username);
@@ -26,6 +26,7 @@ public class AccountDao {
                 account.setUsername(rs.getString(1));
                 account.setPassword(rs.getString(2));
                 account.setUsertype(rs.getString(3));
+                account.setCustomer_id(rs.getInt("customer_id"));
                 account.setId(rs.getInt(4));
             }
 
