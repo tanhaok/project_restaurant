@@ -11,7 +11,9 @@ public class CartModel {
     private int product_price;
 
     //Constructor
-    public CartModel(){}
+    public CartModel() {
+    }
+
     public CartModel(int id, int cust_id, int product_id, int product_amount) {
         this.id = id;
         this.cusId = cust_id;
