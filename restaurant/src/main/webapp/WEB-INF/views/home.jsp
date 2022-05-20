@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,8 +38,8 @@
 			<c:choose>
 				<c:when test="${sessionScope.account != null}">
 					<button type="button" class="btn position-relative">
-						<a href="#"><i class="fa fa-shopping-cart" style="color: #fff"></i></a>
-						<span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">0</span>
+						<a href="${pageContext.request.contextPath}/cart/view/${sessionScope.account.customer_id}"><i class="fa fa-shopping-cart" style="color: #fff"></i></a>
+						<span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">${sessionScope.totalAmount}</span>
 					</button>
 				</c:when>
 			</c:choose>
@@ -157,8 +158,10 @@
 				</div>
 				<div class = "text-center">
 					<p class = "text-capitalize mt-3 mb-1"><%=product.getName()%></p>
-					<span class = "fw-bold d-block"><%=product.getPrice()%>đ</span>
-					<a href = "/view-product/<%=product.getId()%>" class = "btn btn-primary mt-3">Chi Tiết</a>
+					<span class = "fw-bold d-block">
+						<fmt:formatNumber type="number" maxFractionDigits="3" value="<%=product.getPrice()%>"/> đ
+					</span>
+					<a href = "${pageContext.request.contextPath}/view-product/<%=product.getId()%>" class = "btn btn-primary mt-3">Chi Tiết</a>
 				</div>
 			</div>
 			<%}%>
