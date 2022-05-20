@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -77,9 +78,9 @@
         /* Apply dollar signs */
         .product .product-price:before,
         .product .product-line-price:before,
-        .totals-value:before {
+/*        .totals-value:before {
             content: '$';
-        }
+        }*/
 
         /* Body/Header stuff */
         body {
@@ -295,39 +296,60 @@
     <c:forEach var="cart" items="${cart}">
         <div class="product">
             <div class="product-image">
-                <img src="${cart.img}">
+                <img src="<c:url value="${pageContext.request.contextPath}/${cart.img}"/> ">
             </div>
 
             <div class="product-title">${cart.product_name}</div>
 
-            <div class="product-price">${cart.product_price}</div>
+            <div class="product-price">
+                <fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.product_price}"/> đ
+            </div>
             <div class="product-quantity">
-                <input type="number" value="${cart.productAmount}" min="1">
+                <input id="cart-quantity-${cart.productId}" type="number" value="${cart.productAmount}" min="1">
             </div>
             <div class="product-removal">
-                <button class="remove-product">
+                <button data-id="${cart.productId}" class="remove-product edit-cart">
                     Update
                 </button>
             </div>
             <div class="product-removal">
-                <button class="remove-product">
+                <a href="${pageContext.request.contextPath}/cart/delete/${cart.productId}" style="text-decoration: none"
+                   class="remove-product">
                     Remove
-                </button>
+                </a>
             </div>
-            <div class="product-line-price">${cart.product_price * cart.productAmount}</div>
+            <div class="product-line-price">
+                <fmt:formatNumber type="number" maxFractionDigits="3"
+                                  value="${cart.product_price * cart.productAmount}"/> đ
+
+            </div>
         </div>
     </c:forEach>
 
     <div class="totals">
         <div class="totals-item totals-item-total">
             <label>Grand Total</label>
-            <div class="totals-value" id="cart-total">90.57</div>
+            <div class="totals-value" id="cart-total">
+                <fmt:formatNumber type="number" maxFractionDigits="3" value="${sessionScope.totalPrice}"/> đ
+
+            </div>
         </div>
     </div>
 
     <button class="checkout">Checkout</button>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script>
+    $(".edit-cart").on("click", function () {
+        var id = $(this).data("id");
+        var quantity = $("#cart-quantity-" + id).val()
+        window.location = "${pageContext.request.contextPath}/cart/edit/" + id + "/" + quantity;
+    });
+</script>
+
 </body>
 
 </html>
