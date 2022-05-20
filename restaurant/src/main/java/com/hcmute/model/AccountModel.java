@@ -5,13 +5,21 @@ public class AccountModel {
     private String username;
     private String password;
     private String usertype;
-
+private int customer_id;
     //Constructor
     public AccountModel(){}
     public AccountModel(String username, String password, String usertype) {
         this.username = username;
         this.password = password;
         this.usertype = usertype;
+    }
+
+    public AccountModel(int id, String username, String password, String usertype, int customer_id) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.usertype = usertype;
+        this.customer_id = customer_id;
     }
 
     public AccountModel(int id, String username, String password, String usertype) {
@@ -52,6 +60,14 @@ public class AccountModel {
 
     public void setUsertype(String usertype) {
         this.usertype = usertype;
+    }
+
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
     @Override
