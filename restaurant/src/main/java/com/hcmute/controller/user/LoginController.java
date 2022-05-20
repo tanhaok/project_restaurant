@@ -27,7 +27,9 @@ public class LoginController{
         if(account != null){
             HttpSession session = req.getSession(true);
 			session.setAttribute("account",account);
-            return new RedirectView("trang-chu");
+            if(account.getUsertype().equals("admin"))
+                return new RedirectView("admin");
+            else  return new RedirectView("trang-chu");
         }
         else{
         	modelMap.addAttribute("msg", "Tài khoản hoặc mật khẩu không đúng");

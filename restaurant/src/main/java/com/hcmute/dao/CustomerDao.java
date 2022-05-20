@@ -11,6 +11,23 @@ public class CustomerDao {
     Connection connection = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    public CustomerModel getByID(int id){
+        CustomerModel customer = new CustomerModel();
+        try{
+            String sql = "select * from customer where id = ?";
+            connection = DbUtil.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                return customer = new CustomerModel(rs.getInt(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return customer;
+    }
     public int insert(CustomerModel customer){
         int id = 0;
         try{
