@@ -5,6 +5,10 @@ public class CartModel {
     private int cusId;
     private int productId;
     private int productAmount;
+    private int state;
+    private String img;
+    private String product_name;
+    private int product_price;
 
     //Constructor
     public CartModel(){}
@@ -13,6 +17,17 @@ public class CartModel {
         this.cusId = cust_id;
         this.productId = product_id;
         this.productAmount = product_amount;
+    }
+
+    public CartModel(int id, int cusId, int productId, int productAmount, int status, String img, String product_name, int product_price) {
+        this.id = id;
+        this.cusId = cusId;
+        this.productId = productId;
+        this.productAmount = productAmount;
+        this.state = status;
+        this.img = img;
+        this.product_name = product_name;
+        this.product_price = product_price;
     }
 
     //Getter and Setter
@@ -46,6 +61,38 @@ public class CartModel {
 
     public void setProductAmount(int productAmount) {
         this.productAmount = productAmount;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public int getProduct_price() {
+        return product_price;
+    }
+
+    public void setProduct_price(int product_price) {
+        this.product_price = product_price;
     }
 
     @Override
