@@ -2,6 +2,7 @@ package com.hcmute.controller.user;
 
 import javax.servlet.http.*;
 
+import com.hcmute.dao.CartDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class LoginController{
 	AccountDao dao = new AccountDao();
+	CartDao cartDao = new CartDao();
 	@RequestMapping(value= {"/dang-nhap","/login"}, method=RequestMethod.GET)
 	public String showForm() {
 		return "login";	
@@ -27,6 +29,7 @@ public class LoginController{
         if(account != null){
             HttpSession session = req.getSession(true);
 			session.setAttribute("account",account);
+			session.setAttribute("totalAmount", cartDao.totalAmount(account.getCustomer_id()));
             if(account.getUsertype().equals("admin"))
                 return new RedirectView("admin");
             else  return new RedirectView("trang-chu");
