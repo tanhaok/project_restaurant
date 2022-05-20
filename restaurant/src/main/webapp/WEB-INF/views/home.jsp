@@ -15,7 +15,7 @@
 	<!-- Font awesome cdn -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- custom css -->
-	<link rel="stylesheet" href="<c:url value="/resources/css/homepage.css"/>">
+	<link rel="stylesheet" href="<c:url value="../resources/css/homepage.css"/>">
 	<style>
 		#header{
 			background: url(<c:url value="../resources/images/header.jpg"/>) top/ cover no-repeat;
@@ -34,20 +34,47 @@
 		</a>
 
 		<div class="order-lg-2 nav-btns">
-			<button type="button" class="btn position-relative">
-				<i href="/gio-hang" class="fa fa-shopping-cart" style="color: #fff"></i>
-				<span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">0</span>
-			</button>
-			<button type="button" class="btn position-relative">
-				<i href="" class="fa-solid fa-user dropdown-toggle" data-toggle="dropdown" style="color: #fff"></i>
-                <span class="caret"></span>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                  <li class="submenu-item"><a tabindex="-1" href="#" class="text-decoration-none">Tài khoản của tôi</a></li>
-                  <li class="submenu-item"><a tabindex="-1" href="#" class="text-decoration-none">Lịch sử mua hàng</a></li>
-                  <li class="divider"></li>
-                  <li class="submenu-item"><a tabindex="-1" href="<c:url value="/dang-xuat"/>" class="text-decoration-none">Đăng xuất</a></li>
-                </ul>
-			</button>
+			<c:choose>
+				<c:when test="${sessionScope.account != null}">
+					<button type="button" class="btn position-relative">
+						<a href="#"><i class="fa fa-shopping-cart" style="color: #fff"></i></a>
+						<span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">0</span>
+					</button>
+				</c:when>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${sessionScope.account == null}">
+					<button type="button" class="btn position-relative">
+						<a href="/login"><i class="fa fa-shopping-cart" style="color: #fff"></i></a>
+						<span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">0</span>
+					</button>
+				</c:when>
+			</c:choose>
+
+
+			<c:choose>
+				<c:when test="${sessionScope.account != null}">
+				<button type="button" class="btn position-relative">
+					<i href="" class="fa-solid fa-user dropdown-toggle" data-toggle="dropdown" style="color: #fff"></i>
+              	  <span class="caret"></span>
+              	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              	    <li class="submenu-item"><a tabindex="-1" href="#" class="text-decoration-none">Tài khoản của tôi</a></li>
+               	   <li class="submenu-item"><a tabindex="-1" href="#" class="text-decoration-none">Lịch sử mua hàng</a></li>
+              	    <li class="divider"></li>
+               	   <li class="submenu-item"><a tabindex="-1" href="<c:url value="/dang-xuat"/>" class="text-decoration-none">Đăng xuất</a></li>
+              	  </ul>
+				</button>
+				</c:when>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${sessionScope.account == null}">
+					<button type="button" class="btn position-relative">
+						<a href="/login"> <i class="fa-solid fa-user" style="color: #fff"></i></a>
+					</button>
+				</c:when>
+			</c:choose>
 		</div>
 
 		<button class = "navbar-toggler border-0" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navMenu">
