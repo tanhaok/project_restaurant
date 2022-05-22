@@ -5,8 +5,6 @@
 <c:url var="url" value="/WEB-INF/resources/admin"></c:url>
 
 <%@include file="head.jsp" %>
-
-
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-12 col-xl-6">

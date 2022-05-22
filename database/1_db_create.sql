@@ -48,13 +48,21 @@ CREATE TABLE product(
     PRIMARY KEY (id)
 );
 
+-- thay đổi table cart
 CREATE TABLE cart(
 	id int NOT NULL AUTO_INCREMENT,
 	cust_id int,
-	product_id int,
-	product_amount int,
+	state int, 
     FOREIGN KEY (cust_id) REFERENCES customer(id),
-    FOREIGN KEY (product_id) REFERENCES product(id),
+    PRIMARY KEY (id)
+);
+-- thêm table cart_item
+CREATE TABLE cart_item(
+	id int NOT NULL AUTO_INCREMENT,
+	cart_id int,
+	product_id int, 
+    product_amount int, 
+    FOREIGN KEY (cart_id) REFERENCES cart(id),
     PRIMARY KEY (id)
 );
 

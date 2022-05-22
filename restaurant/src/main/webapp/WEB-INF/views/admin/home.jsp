@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:url var="url" value="/WEB-INF/resources/admin"></c:url>
+<c:url var="url" value="/resources/admin"></c:url>
 
 <%@include file="head.jsp" %>
 

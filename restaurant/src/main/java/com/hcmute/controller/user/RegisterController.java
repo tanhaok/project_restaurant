@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hcmute.dao.CustomerDao;
 import com.hcmute.model.AccountModel;
+import com.hcmute.model.CustomerModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import java.io.IOException;
 @Controller
 public class RegisterController {
     AccountDao dao = new AccountDao();
+    CustomerDao customerDao = new CustomerDao();
     @RequestMapping(value= {"/register","/dang-ky"}, method=RequestMethod.GET)
     public String showForm() {
     	return "login";
@@ -42,6 +45,12 @@ public class RegisterController {
             if(result){
                 model.addAttribute("msg","Đăng ký tài khoản thành công");
                 model.addAttribute("type","success");
+                // tạo customer
+                CustomerModel temp = new CustomerModel();
+                temp.setName(username);
+                customerDao.insert(temp);
+                int customer_id = customerDao.getIdByName(username);
+                dao.updateCustomerID(customer_id, username);
                 return "login";
 
             }

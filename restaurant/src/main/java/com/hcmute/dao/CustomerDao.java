@@ -11,6 +11,23 @@ public class CustomerDao {
     Connection connection = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    public CustomerModel getByID(int id){
+        CustomerModel customer = new CustomerModel();
+        try{
+            String sql = "select * from customer where id = ?";
+            connection = DbUtil.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                return customer = new CustomerModel(rs.getInt(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return customer;
+    }
     public int insert(CustomerModel customer){
         int id = 0;
         try{
@@ -39,6 +56,22 @@ public class CustomerDao {
             rs = ps.executeQuery();
             while (rs.next()){
                 return rs.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getIdByName(String username){
+        try{
+            String sql = "select id from customer where name = ?";
+            connection = DbUtil.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                return rs.getInt("id");
             }
         }catch (Exception e){
             e.printStackTrace();

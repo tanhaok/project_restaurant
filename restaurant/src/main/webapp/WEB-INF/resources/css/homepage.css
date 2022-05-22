@@ -28,6 +28,18 @@ body{
 .nav-item{
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
 }
+.submenu-item{
+    padding:5px;
+    padding-left:10px;
+    background-color:#fff;
+}
+.submenu-item a{
+    font-size:18px;
+    color:#000;
+}
+.submenu-item:hover a{
+    color:var(--main-color);
+}
 
 /* button */
 .btn:not(.nav-btns button){

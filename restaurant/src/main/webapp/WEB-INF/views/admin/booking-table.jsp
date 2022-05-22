@@ -16,13 +16,23 @@
 <body>
     <section id="table-management" class="container d-flex align-content-center flex-column pt-3 pb-3">
         <h2 class="text-center mt-2 mb-5">Quản lý bàn</h2>
+        <div id="top-subnav">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="nav" id="subnav-link">
+                        <a class="nav-link active" href="<c:url value="/booking-table"/>">Chọn bàn</a>
+                        <a class="nav-link" href="<c:url value="/list-booked-table"/>">Danh sách đặt bàn</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
         <div class="choose-table-container">
         <c:forEach items="${listTables}" var="t">
             <c:choose>
                 <c:when test="${t.getStatus() == 'deactivate'}">
-                    <a href="<c:url value="/booking-table/cancel/${t.getId()}"/>" class="table-item deactivate"  data-id="${t.getId()}">
+                    <div class="table-item deactivate"  data-id="${t.getId()}">
                     ${t.getId()}
-                    </a>
+                    </div>
                 </c:when>
                 <c:otherwise>
                     <div class="table-item" data-toggle="modal" data-target="#myModal" data-id="${t.getId()}">

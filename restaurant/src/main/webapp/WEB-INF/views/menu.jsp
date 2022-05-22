@@ -3,7 +3,7 @@
 <%@ page import="com.hcmute.model.CommentModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.hcmute.model.AccountModel" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: hao_n
@@ -90,13 +90,47 @@
         </a>
 
         <div class="order-lg-2 nav-btns">
-            <button type="button" class="btn position-relative">
-                <i class="fa fa-shopping-cart" style="color: #fff"></i>
-                <span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">6</span>
-            </button>
-            <button type="button" class="btn position-relative">
-                <i class="fa-solid fa-user" style="color: #fff"></i>
-            </button>
+            <c:choose>
+                <c:when test="${sessionScope.account != null}">
+                    <button type="button" class="btn position-relative">
+                        <a href="${pageContext.request.contextPath}/cart/view/${sessionScope.account.customer_id}"><i class="fa fa-shopping-cart" style="color: #fff"></i></a>
+                        <span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">${sessionScope.totalAmount}</span>
+                    </button>
+                </c:when>
+            </c:choose>
+
+            <c:choose>
+                <c:when test="${sessionScope.account == null}">
+                    <button type="button" class="btn position-relative">
+                        <a href="/login"><i class="fa fa-shopping-cart" style="color: #fff"></i></a>
+                        <span class = "position-absolute top-0 start-100 translate-middle badge bg-danger">0</span>
+                    </button>
+                </c:when>
+            </c:choose>
+
+
+            <c:choose>
+                <c:when test="${sessionScope.account != null}">
+                    <button type="button" class="btn position-relative">
+                        <i href="" class="fa-solid fa-user dropdown-toggle" data-toggle="dropdown" style="color: #fff"></i>
+                        <span class="caret"></span>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                            <li class="submenu-item"><a tabindex="-1" href="#" class="text-decoration-none">Tài khoản của tôi</a></li>
+                            <li class="submenu-item"><a tabindex="-1" href="#" class="text-decoration-none">Lịch sử mua hàng</a></li>
+                            <li class="divider"></li>
+                            <li class="submenu-item"><a tabindex="-1" href="<c:url value="/dang-xuat"/>" class="text-decoration-none">Đăng xuất</a></li>
+                        </ul>
+                    </button>
+                </c:when>
+            </c:choose>
+
+            <c:choose>
+                <c:when test="${sessionScope.account == null}">
+                    <button type="button" class="btn position-relative">
+                        <a href="/login"> <i class="fa-solid fa-user" style="color: #fff"></i></a>
+                    </button>
+                </c:when>
+            </c:choose>
         </div>
 
         <button class = "navbar-toggler border-0" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navMenu">
@@ -115,7 +149,7 @@
                     <a class = "nav-link text-uppercase text-light" href = "<c:url value="/dat-cho"/>">Đặt bàn</a>
                 </li>
                 <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-light" href = "#about">Về chúng tôi</a>
+                    <a class = "nav-link text-uppercase text-light" href = "/trang-chu#about">Về chúng tôi</a>
                 </li>
                 <li class = "nav-item px-2 py-2 border-0">
                     <c:choose>
@@ -153,7 +187,10 @@
                         </div>
                         <div class = "text-center">
                             <p class = "text-capitalize mt-3 mb-1"><%=product.getName()%></p>
-                            <span class = "fw-bold d-block"><%=product.getPrice()%>đ</span>
+                            <span class = "fw-bold d-block">
+                                <fmt:formatNumber type="number" maxFractionDigits="3" value="<%=product.getPrice()%>"/> đ
+
+                            </span>
                             <a href = "/view-product/<%=product.getId()%>" class = "btn btn-primary mt-3">View More</a>
                         </div>
                     </div>
@@ -189,7 +226,7 @@
                                 <span class = "text-capitalize mt-3 mb-1"><%=product.getDescription()%></span>
                             </div>
                             <div>
-                                <a href = "#" class = "btn btn-primary mt-3">Add To Basket</a>
+                                <a href = "${pageContext.request.contextPath}/cart/add/<%=product.getId()%>" class = "btn btn-primary mt-3">Add To Basket</a>
                             </div>
 
                             <div class = "show-comment">
