@@ -22,4 +22,8 @@
     <!-- <mvc:resources mapping="/assets/**"
     location="/, classpath://WEB-INF/assets/" cache-period="10000"/>
     -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+    </bean>
+    <mvc:default-servlet-handler/>
 </beans>

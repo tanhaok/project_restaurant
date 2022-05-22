@@ -89,6 +89,7 @@ public class EmployeeDao {
                 int salary = rs.getInt("salary");
                 String img = rs.getString("img");
                 employees.add(new EmployeeModel(id, name, address, phone, salary, img));
+                System.out.println(employees.toString());
             }
         } catch (SQLException | ClassNotFoundException e) {
             ddUtil.printSQLException((SQLException) e);

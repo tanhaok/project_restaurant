@@ -1,5 +1,7 @@
 package com.hcmute.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EmployeeModel {
     private int id;
     private String name;
@@ -7,6 +9,16 @@ public class EmployeeModel {
     private String phone;
     private int salary;
     private String img;
+
+    private MultipartFile profileImage;
+
+    public MultipartFile getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(MultipartFile profileImage) {
+        this.profileImage = profileImage;
+    }
 
     //constructor
     public EmployeeModel(){
