@@ -14,8 +14,8 @@ import java.util.List;
 
 public class InvoiceDao {
     private DbUtil dbUtil;
-    private static final String STATISTIC_SALE_BY_PRODUCT = "SELECT p.id, p.name, SUM(total_cost) as total_cost FROM product p, cart c, invoice i WHERE p.id = c.product_id AND c.id = i.cart_id GROUP BY p.id";
-    private static final String STATISTIC_SALE_BY_PRODUCT_OPTIONS = "SELECT p.id, p.name, SUM(total_cost) as total_cost FROM product p, cart c, invoice i WHERE p.id = c.product_id AND c.id = i.cart_id AND p.name LIKE CONCAT('%', ?, '%') AND i.create_date >= ? AND create_date <= ? GROUP BY p.id";
+    private static final String STATISTIC_SALE_BY_PRODUCT = "select p.id, p.name, sum(p.price * ci.product_amount) as total_cost from cart_item ci, product p, cart c, invoice i where i.cart_id = c.id and c.id = ci.cart_id and p.id = ci.product_id and state = 1  group by p.id;";
+    private static final String STATISTIC_SALE_BY_PRODUCT_OPTIONS = "select p.id, p.name, sum(p.price * ci.product_amount) as total_cost from cart_item ci, product p, cart c, invoice i where i.cart_id = c.id and p.id = ci.product_id and c.id = ci.cart_id and state = 1 AND p.name LIKE CONCAT('%', ? , '%') AND i.create_date >= ? AND create_date <= ?  group by p.id;";
     private static final String SELECT_ALL_INVOICE = "SELECT * FROM invoice";
     private static final String SELECT_PART_INVOICE = "SELECT * FROM invoice ORDER BY create_date DESC LIMIT 5";
     private static final String GET_TOTAL_SALE_TODAY = "SELECT SUM(total_cost) AS total_sale_today FROM invoice WHERE  DATE(create_date) = CURRENT_DATE()";
