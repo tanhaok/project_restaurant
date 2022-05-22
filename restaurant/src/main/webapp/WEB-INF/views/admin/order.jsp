@@ -2,7 +2,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:url var="url" value="/WEB-INF/resources/admin"></c:url>
+<c:url var="url" value="/resources/admin"></c:url>
 
 <%@include file="head.jsp" %>
 
@@ -26,14 +26,14 @@
                 <c:forEach var="invoices" items="${invoices}">
                     <tr>
                         <td>${invoices.id}</td>
-                        <td>${invoices.cust_id}</td>
-                        <td>${invoices.emp_id}</td>
-                        <td>${invoices.cart_id}</td>
-                        <td>${invoices.total_cost}</td>
-                        <td>${invoices.create_date}</td>
+                        <td>${invoices.cusId}</td>
+                        <td>${invoices.empId}</td>
+                        <td>${invoices.cartId}</td>
+                        <td>${invoices.totalCost}</td>
+                        <td>${invoices.createDate}</td>
 
                         <td>
-                            <a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/admin/quan-ly-don-hang/edit?id=${invoices.id}">Sửa</a>
+                            <a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/admin/quan-ly-don-hang/view?id=${invoices.id}">Sửa</a>
                             <a class="btn btn-sm btn-danger" href="${pageContext.request.contextPath}/admin/quan-ly-don-hang/delete/${invoices.id}">Xoá</a>
                         </td>
                     </tr>
