@@ -57,7 +57,7 @@
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Đơn hàng gần đây</h6>
-            <a href="${pageContext.request.contextPath}/admin/quan-ly-don-hang">Hiển thị tất cả</a>
+            <a href="<c:url value="/admin/quan-ly-don-hang/"/>">Hiển thị tất cả</a>
         </div>
         <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -76,14 +76,14 @@
                 <c:forEach var="invoices" items="${invoices_part}">
                     <tr>
                         <td>${invoices.id}</td>
-                        <td>${invoices.cust_id}</td>
-                        <td>${invoices.emp_id}</td>
-                        <td>${invoices.cart_id}</td>
-                        <td>${invoices.total_cost}</td>
-                        <td>${invoices.create_date}</td>
+                        <td>${invoices.cusId}</td>
+                        <td>${invoices.empId}</td>
+                        <td>${invoices.cartId}</td>
+                        <td>${invoices.totalCost}</td>
+                        <td>${invoices.createDate}</td>
                         <td>
                             <a class="btn btn-sm btn-primary"
-                               href="${pageContext.request.contextPath}/admin/quan-ly-don-hang/edit?id=${invoices.id}">Detail</a>
+                               href="${pageContext.request.contextPath}/admin/quan-ly-don-hang/view?id=${invoices.id}">Detail</a>
                             <a class="btn btn-sm btn-danger"
                                href="${pageContext.request.contextPath}/admin/quan-ly-don-hang/delete/${invoices.id}">Delete</a>
                         </td>
