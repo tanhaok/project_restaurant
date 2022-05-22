@@ -28,7 +28,7 @@ public class OrderController {
     }
     @RequestMapping(value = "/view")
     public ModelAndView Retrieve(@RequestParam(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("admin/invoice-edit");
+        ModelAndView mav = new ModelAndView("admin/order-edit");
         mav.addObject("invoice", invoiceDao.selectInvoiceByID(id));
         mav.addObject("active2", "active");
         return mav;
@@ -37,7 +37,7 @@ public class OrderController {
     @RequestMapping("/delete/{id}")
     public String Delete(@PathVariable int id) {
         invoiceDao.deleteInvoice(id);
-        return "redirect:/admin/quan-ly-don-hang";
+        return "redirect:/admin/quan-ly-don-hang/";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
@@ -50,6 +50,6 @@ public class OrderController {
             @RequestParam(name = "create_date") Date create_date) {
         InvoiceModel invoice = new InvoiceModel(id, cust_id, emp_id, cart_id, total_cost, create_date);
         invoiceDao.updateInvoice(invoice);
-        return "redirect:/admin/quan-ly-don-hang";
+        return "redirect:/admin/quan-ly-don-hang/";
     }
 }
