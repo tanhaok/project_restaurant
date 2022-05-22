@@ -21,15 +21,15 @@
                 <form action="${pageContext.request.contextPath}/admin/quan-ly-tai-chinh/doanh-thu-san-pham">
                     <div class="mb-3">
                         <label for="keyword" class="form-label">Từ khoá</label>
-                        <input type="text" class="form-control" id="keyword" name="keyword" />
+                        <input required type="text" class="form-control" id="keyword" name="keyword" />
                     </div>
                     <div class="mb-3">
                         <label for="from_date" class="form-label">Ngày bắt đầu</label>
-                        <input type="date" class="form-control" id="from_date" name="from_date" />
+                        <input required type="date" class="form-control" id="from_date" name="from_date" />
                     </div>
                     <div class="mb-3">
                         <label for="to_date" class="form-label">Ngày kết thúc</label>
-                        <input type="date" class="form-control" id="to_date" name="to_date" />
+                        <input required type="date" class="form-control" id="to_date" name="to_date" />
                     </div>
                     <button type="submit" class="btn btn-primary">Thống kê</button>
                 </form>
