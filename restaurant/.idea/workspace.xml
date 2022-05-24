@@ -3,18 +3,18 @@
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="restaurant:war" />
-      <artifact name="restaurant:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d13676cf-7bc1-48f8-8d79-cf70a17fbaba" name="Changes" comment="create menu page">
+    <list default="true" id="d13676cf-7bc1-48f8-8d79-cf70a17fbaba" name="Changes" comment="add dependency">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcmute/utils/InvoicePDFGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/da7b706d-5aa1-4f11-8d8d-883419a3d936.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/da7b706d-5aa1-4f11-8d8d-883419a3d936.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmute/controller/user/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmute/controller/user/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmute/controller/admin/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmute/controller/admin/FinanceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmute/utils/DbUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmute/utils/DbUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -58,19 +58,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../sach/BT/HK5/LapTrinhWeb/WebsiteBanGiay" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.63" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.63" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="restaurant:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/restaurant_war_exploded" />
-          </settings>
-        </artifact>
         <artifact name="restaurant:war">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
@@ -151,7 +146,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="restaurant:war exploded" />
           <artifact name="restaurant:war" />
         </option>
       </method>
@@ -172,7 +166,11 @@
       <workItem from="1652852926493" duration="3834000" />
       <workItem from="1652865123891" duration="2475000" />
       <workItem from="1652936758980" duration="17054000" />
-      <workItem from="1653006553783" duration="2145000" />
+      <workItem from="1653006553783" duration="2510000" />
+      <workItem from="1653059202775" duration="517000" />
+      <workItem from="1653059780458" duration="2621000" />
+      <workItem from="1653370218380" duration="1159000" />
+      <workItem from="1653398241480" duration="4450000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor file name and variable">
       <created>1652748596084</created>
@@ -223,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652954832084</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="finish comment">
+      <created>1653009019600</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653009019600</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add dependency">
+      <created>1653401981968</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1653401981968</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,6 +261,8 @@
     <MESSAGE value="fix url" />
     <MESSAGE value="add asset and menu page" />
     <MESSAGE value="create menu page" />
-    <option name="LAST_COMMIT_MESSAGE" value="create menu page" />
+    <MESSAGE value="finish comment" />
+    <MESSAGE value="add dependency" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dependency" />
   </component>
 </project>
