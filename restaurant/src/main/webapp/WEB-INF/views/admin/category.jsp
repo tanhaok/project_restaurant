@@ -6,6 +6,9 @@
 
 <%@include file="head.jsp" %>
 
+<a class="btn btn-lg btn-success rounded-pill m-2" href="<c:url value="/admin/quan-ly-danh-muc/view/add" />">Thêm danh
+    mục</a>
+
 <div class="container-fluid pt-4 px-4">
     <div class="bg-light text-center rounded p-4">
         <div class="table-responsive">
@@ -22,12 +25,14 @@
                 <c:forEach var="categories" items="${categories}">
                     <tr>
                         <td>${categories.id}</td>
-                        <td>${categories.cusId}</td>
+                        <td>${categories.name}</td>
 
 
                         <td>
-                            <a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/admin/quan-ly-don-hang/view?id=${invoices.id}">Sửa</a>
-                            <a class="btn btn-sm btn-danger" href="${pageContext.request.contextPath}/admin/quan-ly-don-hang/delete/${invoices.id}">Xoá</a>
+                            <a class="btn btn-sm btn-primary"
+                               href="<c:url value="/admin/quan-ly-danh-muc/view/edit?id=${categories.id}" />">Sửa</a>
+                            <a class="btn btn-sm btn-danger"
+                               href="<c:url value="/admin/quan-ly-danh-muc/delete/${categories.id}" />">Xoá</a>
                         </td>
                     </tr>
                 </c:forEach>
