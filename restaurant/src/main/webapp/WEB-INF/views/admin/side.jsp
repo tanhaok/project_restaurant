@@ -10,8 +10,8 @@
             <a href="<c:url value="/admin/quan-ly-don-hang/"/>" class="nav-item nav-link ${active2}"><i class="fa fa-th me-2"></i>Quản lý đơn hàng</a>
             <a href="<c:url value="/admin/quan-ly-tai-chinh/" />" class="nav-item nav-link ${active3}"><i class="fa fa-keyboard me-2"></i>Quản lý tài chính</a>
             <a href="<c:url value="/dat-cho"/>" class="nav-item nav-link ${active4}"><i class="fa fa-keyboard me-2"></i>Quản lý bàn</a>
-            <a href="viewproduct" class="nav-item nav-link ${active5}"><i class="fa fa-keyboard me-2"></i>Product</a>
-            <a href="viewemp" class="nav-item nav-link ${active6}"><i class="fa fa-keyboard me-2"></i>Employee</a>
+            <a href="<c:url value="/viewproduct"></c:url>" class="nav-item nav-link ${active5}"><i class="fa fa-keyboard me-2"></i>Product</a>
+            <a href="<c:url value="/viewemp" />" class="nav-item nav-link ${active6}"><i class="fa fa-keyboard me-2"></i>Employee</a>
 
         </div>
     </nav>
