@@ -191,7 +191,7 @@
                                 <fmt:formatNumber type="number" maxFractionDigits="3" value="<%=product.getPrice()%>"/> đ
 
                             </span>
-                            <a href = "/view-product/<%=product.getId()%>" class = "btn btn-primary mt-3">View More</a>
+                            <a href = "/view-product/<%=product.getId()%>" class = "btn btn-primary mt-3">Chi Tiết</a>
                         </div>
                     </div>
                     <%}%>
@@ -226,7 +226,7 @@
                                 <span class = "text-capitalize mt-3 mb-1"><%=product.getDescription()%></span>
                             </div>
                             <div>
-                                <a href = "${pageContext.request.contextPath}/cart/add/<%=product.getId()%>" class = "btn btn-primary mt-3">Add To Basket</a>
+                                <a href = "${pageContext.request.contextPath}/cart/add/<%=product.getId()%>" class = "btn btn-primary mt-3">Thêm Vào Giỏ Hàng</a>
                             </div>
 
                             <div class = "show-comment">
@@ -246,14 +246,14 @@
                                     <% AccountModel account = (AccountModel) session.getAttribute("account"); %>
                                     <c:choose>
                                         <c:when test="${sessionScope.account == null}">
-                                            <p>Login to write comment</p>
+                                            <p>Vui lòng đăng nhập để viết bình luận</p>
                                         </c:when>
                                     </c:choose>
                                     <c:choose>
                                         <c:when test="${sessionScope.account != null}">
                                             <form action="/insert-comment/<%=account.getId()%>/<%=product.getId()%>" method="POST">
                                                 <input type="text" id="input_comment" name="content" placeholder="your comment" />
-                                                <button id="send_comment" type="submit">Send</button>
+                                                <button id="send_comment" type="submit">Gửi</button>
                                             </form>
                                         </c:when>
                                     </c:choose>
