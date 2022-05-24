@@ -35,6 +35,10 @@ public class CartController {
     public ModelAndView Add(HttpSession session, @PathVariable int product_id) {
         ModelAndView mav = new ModelAndView("redirect:/view-product/" + product_id);
         AccountModel account = (AccountModel) session.getAttribute("account");
+        if (account == null){
+            ModelAndView accountNull = new ModelAndView("redirect:/login");
+            return accountNull;
+        }
         int customer_id = account.getCustomer_id();
         ProductModel product = productDao.getProductById(product_id);
         CartModel itemCart = new CartModel();
