@@ -1,7 +1,6 @@
 package com.hcmute.controller.user;
 
 import com.hcmute.dao.CartDao;
-import com.hcmute.dao.CustomerDao;
 import com.hcmute.dao.ProductDao;
 import com.hcmute.model.AccountModel;
 import com.hcmute.model.CartModel;
@@ -19,7 +18,7 @@ import java.util.List;
 public class CartController {
     public CartDao cartDao = new CartDao();
     public ProductDao productDao = new ProductDao();
-    public CustomerDao customerDao = new CustomerDao();
+
 
     private int existProduct(int product_id, List<CartModel> cart) {
         for (int i = 0; i < cart.size(); i++) {
@@ -36,8 +35,7 @@ public class CartController {
         ModelAndView mav = new ModelAndView("redirect:/view-product/" + product_id);
         AccountModel account = (AccountModel) session.getAttribute("account");
         if (account == null){
-            ModelAndView accountNull = new ModelAndView("redirect:/login");
-            return accountNull;
+            return new ModelAndView("redirect:/login");
         }
         int customer_id = account.getCustomer_id();
         ProductModel product = productDao.getProductById(product_id);
