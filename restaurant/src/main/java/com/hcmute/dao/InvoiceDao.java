@@ -240,9 +240,9 @@ public class InvoiceDao {
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INVOICE);
         ) {
             preparedStatement.setInt(1, invoiceModel.getCusId());
-            preparedStatement.setInt(3, invoiceModel.getCartId());
-            preparedStatement.setDouble(4, invoiceModel.getTotalCost());
-            preparedStatement.setDate(5, new java.sql.Date(invoiceModel.getCreateDate().getTime()));
+            preparedStatement.setInt(2, invoiceModel.getCartId());
+            preparedStatement.setDouble(3, invoiceModel.getTotalCost());
+            preparedStatement.setDate(4, new java.sql.Date(invoiceModel.getCreateDate().getTime()));
 
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
