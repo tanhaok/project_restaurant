@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -83,12 +84,16 @@
               <h6 class="my-0">${cart.product_name}</h6>
               <small class="text-muted">Số Lượng: ${cart.productAmount}</small>
             </div>
-            <span class="text-muted">${cart.product_price * cart.productAmount} đ</span>
+            <span class="text-muted">
+              <fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.product_price * cart.productAmount}"/> đ
+            </span>
           </li>
             </c:forEach>
           <li class="list-group-item d-flex justify-content-between">
             <span>Tổng Cộng</span>
-            <strong>${sessionScope.totalPrice} đ</strong>
+            <strong>
+              <fmt:formatNumber type="number" maxFractionDigits="3" value="${sessionScope.totalPrice}"/> đ
+            </strong>
           </li>
         </ul>
 
