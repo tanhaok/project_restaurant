@@ -22,6 +22,7 @@ public class CartDao {
     private static final String UPDATE_CART = "update cart_item set product_amount = ? where cart_id = ? and product_id = ?";
     private static final String DELETE_CART = "delete from cart_item where cart_id = ? and product_id = ?";
     private static final String TOTAL_AMOUNT = "select sum(product_amount) as totalAmount from cart, cart_item where cart.id = cart_item.cart_id and cust_id = ? and state = 0;";
+    private static final String UPDATE_STATUS_CART = "UPDATE cart set state = 1 WHERE id = ?";
 
     public boolean existCart(int customer_id) {
         boolean exist = false;
@@ -166,17 +167,31 @@ public class CartDao {
     public int totalAmount(int customer_id) {
         int totalAmount = 0;
         List<CartModel> cart = selectCart(customer_id);
-        for(CartModel itemCart : cart){
+        for (CartModel itemCart : cart) {
             totalAmount += itemCart.getProductAmount();
         }
         return totalAmount;
     }
-    public double totalPrice(int customer_id){
+
+    public double totalPrice(int customer_id) {
         double totalPrice = 0;
         List<CartModel> cart = selectCart(customer_id);
-        for(CartModel itemCart : cart){
+        for (CartModel itemCart : cart) {
             totalPrice += itemCart.getProduct_price() * itemCart.getProductAmount();
         }
         return totalPrice;
+    }
+
+    public boolean updateStatusCart(int cart_id) {
+        boolean rowUpdated;
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_STATUS_CART);) {
+            statement.setInt(1, cart_id);
+
+            rowUpdated = statement.executeUpdate() > 0;
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return rowUpdated;
     }
 }
