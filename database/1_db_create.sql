@@ -71,7 +71,7 @@ CREATE TABLE invoice(
     cust_id int,
     emp_id int,
     cart_id int,
-    total_cost int,
+    total_cost double,
     create_date datetime,
     FOREIGN KEY (cust_id) REFERENCES customer(id),
     FOREIGN KEY (emp_id) REFERENCES employee(id),

@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,6 +23,7 @@ public class InvoiceDao {
     private static final String DELETE_INVOICE = "DELETE FROM invoice WHERE id = ?";
     private static final String UPDATE_INVOICE = "UPDATE invoice SET cust_id = ?, emp_id= ?, cart_id =?, total_cost =?, create_date =? where id = ?";
     private static final String SELECT_INVOICE_BY_ID = "SELECT * FROM invoice WHERE id = ?";
+    private static final String INSERT_INVOICE = "INSERT INTO invoice (cust_id, emp_id, cart_id, total_cost, create_date) VALUES (?,1,?,?,?)";
 
     public InvoiceDao() {
         this.dbUtil = new DbUtil();
@@ -126,7 +127,7 @@ public class InvoiceDao {
             statement.setInt(1, Invoice.getCusId());
             statement.setInt(2, Invoice.getEmpId());
             statement.setInt(3, Invoice.getCartId());
-            statement.setInt(4, Invoice.getTotalCost());
+            statement.setDouble(4, Invoice.getTotalCost());
             statement.setDate(5, (java.sql.Date) Invoice.getCreateDate());
             statement.setInt(6, Invoice.getId());
 
@@ -166,7 +167,7 @@ public class InvoiceDao {
                 int cust_id = rs.getInt("cust_id");
                 int emp_id = rs.getInt("emp_id");
                 int cart_id = rs.getInt("cart_id");
-                int total_cost = rs.getInt("total_cost");
+                double total_cost = rs.getDouble("total_cost");
                 Date create_date = rs.getDate("create_date");
                 invoice = new InvoiceModel(id, cust_id, emp_id, cart_id, total_cost, create_date);
             }
@@ -194,7 +195,7 @@ public class InvoiceDao {
                 int cust_id = rs.getInt("cust_id");
                 int emp_id = rs.getInt("emp_id");
                 int cart_id = rs.getInt("cart_id");
-                int total_cost = rs.getInt("total_cost");
+                double total_cost = rs.getDouble("total_cost");
                 Date create_date = rs.getDate("create_date");
 
                 invoices.add(new InvoiceModel(id, cust_id, emp_id, cart_id, total_cost, create_date));
@@ -223,7 +224,7 @@ public class InvoiceDao {
                 int cust_id = rs.getInt("cust_id");
                 int emp_id = rs.getInt("emp_id");
                 int cart_id = rs.getInt("cart_id");
-                int total_cost = rs.getInt("total_cost");
+                double total_cost = rs.getDouble("total_cost");
                 Date create_date = rs.getDate("create_date");
 
                 invoices.add(new InvoiceModel(id, cust_id, emp_id, cart_id, total_cost, create_date));
@@ -232,5 +233,21 @@ public class InvoiceDao {
             e.printStackTrace();
         }
         return invoices;
+    }
+
+    public void createInvoice(InvoiceModel invoiceModel) {
+        try (Connection connection = DbUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INVOICE);
+        ) {
+            preparedStatement.setInt(1, invoiceModel.getCusId());
+            preparedStatement.setInt(3, invoiceModel.getCartId());
+            preparedStatement.setDouble(4, invoiceModel.getTotalCost());
+            preparedStatement.setDate(5, new java.sql.Date(invoiceModel.getCreateDate().getTime()));
+
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

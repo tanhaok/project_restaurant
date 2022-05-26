@@ -336,7 +336,7 @@
         </div>
     </div>
 
-    <button class="checkout">Checkout</button>
+    <a class="checkout" href="${pageContext.request.contextPath}/checkout/${sessionScope.account.customer_id}">Checkout</a>
 
 </div>
 

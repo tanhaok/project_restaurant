@@ -7,12 +7,12 @@ public class InvoiceModel {
     private int cusId;
     private int empId;
     private int cartId;
-    private int totalCost;
+    private double totalCost;
     private Date createDate;
 
     //Constructor
     public InvoiceModel(){}
-    public InvoiceModel(int id, int cust_id, int emp_id, int cart_id, int total_cost, Date create_date) {
+    public InvoiceModel(int id, int cust_id, int emp_id, int cart_id, double total_cost, Date create_date) {
         this.id = id;
         this.cusId = cust_id;
         this.empId = emp_id;
@@ -55,11 +55,11 @@ public class InvoiceModel {
         this.cartId = cartId;
     }
 
-    public int getTotalCost() {
+    public double getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(int totalCost) {
+    public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
 
