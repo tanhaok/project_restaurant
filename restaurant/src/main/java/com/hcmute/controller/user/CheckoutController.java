@@ -21,7 +21,7 @@ public class CheckoutController {
     public InvoiceDao invoiceDao = new InvoiceDao();
 
     @RequestMapping(value = "/checkout/{userID}")
-    public ModelAndView index (HttpSession session, @PathVariable int userID) {
+    public ModelAndView index(HttpSession session, @PathVariable int userID) {
         ModelAndView mav = new ModelAndView("checkout");
         mav.addObject("cart", cartDao.selectCart(userID));
         session.setAttribute("totalPrice", cartDao.totalPrice(userID));
@@ -29,7 +29,7 @@ public class CheckoutController {
     }
 
     @RequestMapping(value = "checkout-confirmed/{userID}")
-    public String confirm (HttpSession session, @PathVariable int userID){
+    public String confirm(HttpSession session, @PathVariable int userID) {
         AccountModel account = (AccountModel) session.getAttribute("account");
 
         List<CartModel> cart = cartDao.selectCart(userID);
@@ -46,6 +46,9 @@ public class CheckoutController {
         invoiceDao.createInvoice(invoice);
         InvoicePDFGenerator pdfGenerator = new InvoicePDFGenerator(cart, account, invoice);
         pdfGenerator.writeData();
+
+        cartDao.updateStatusCart(cartID);
+        session.setAttribute("totalAmount", 0);
 
         return "checkout-success";
     }
