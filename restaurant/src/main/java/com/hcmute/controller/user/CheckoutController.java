@@ -29,8 +29,7 @@ public class CheckoutController {
     }
 
     @RequestMapping(value = "checkout-confirmed/{userID}")
-    public ModelAndView confirm (HttpSession session, @PathVariable int userID){
-        ModelAndView mav = new ModelAndView("redirect:/trang-chu");
+    public String confirm (HttpSession session, @PathVariable int userID){
         AccountModel account = (AccountModel) session.getAttribute("account");
 
         List<CartModel> cart = cartDao.selectCart(userID);
@@ -48,7 +47,7 @@ public class CheckoutController {
         InvoicePDFGenerator pdfGenerator = new InvoicePDFGenerator(cart, account, invoice);
         pdfGenerator.writeData();
 
-        return mav;
+        return "checkout-success";
     }
 
 }
