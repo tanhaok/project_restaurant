@@ -53,7 +53,7 @@ public class adminEmployeeCRUDController {
 //        return "redirect:/viewemp";
 //    }
 
-    @RequestMapping(value="editsave",method=RequestMethod.POST)
+    @RequestMapping(value="/editsave",method=RequestMethod.POST)
     public String editsave(@RequestParam CommonsMultipartFile file,
                             HttpSession session, @ModelAttribute("product") EmployeeModel employeeModel) throws Exception,SQLException{
 
@@ -90,7 +90,7 @@ public class adminEmployeeCRUDController {
 //        return "redirect:/viewemp";
 //    }
 
-    @RequestMapping(value="save",method=RequestMethod.POST)
+    @RequestMapping(value="/save",method=RequestMethod.POST)
     public String saveimage(@RequestParam CommonsMultipartFile file,
                             HttpSession session, @ModelAttribute("product") EmployeeModel employeeModel) throws Exception,SQLException{
 

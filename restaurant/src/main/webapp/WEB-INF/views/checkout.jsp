@@ -104,20 +104,15 @@
           <div class="row g-3">
             <div class="col-12">
               <label for="name" class="form-label">Họ Tên</label>
-              <input type="text" class="form-control" id="name" placeholder="Nguyen Van A" value="" required>
+              <input type="text" class="form-control" id="name" placeholder="Nguyen Van A" value="" required="true">
               <div class="invalid-feedback">
                 Vui lòng điền họ tên.
               </div>
             </div>
 
             <div class="col-12">
-              <label for="email" class="form-label">Email <span class="text-muted">(không bắt buộc)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
-            </div>
-
-            <div class="col-12">
               <label for="address" class="form-label">Địa Chỉ</label>
-              <input type="text" class="form-control" id="address" placeholder="01 Võ Văn Ngân" required>
+              <input type="text" class="form-control" id="address" placeholder="01 Võ Văn Ngân" required="true">
               <div class="invalid-feedback">
                 Vui lòng điền địa chỉ hợp lệ.
               </div>
@@ -125,7 +120,7 @@
 
             <div class="col-12">
               <label for="phone" class="form-label">Số Điện Thoại</label>
-              <input type="text" class="form-control" id="phone" placeholder="0123456789" required>
+              <input type="text" class="form-control" id="phone" placeholder="0123456789" required="true">
               <div class="invalid-feedback">
                 Vui lòng điền số điện thoại hợp lệ.
               </div>
