@@ -35,3 +35,19 @@ insert into `restaurant_db`.`product` ( name, description, img, price, amount, c
 insert into `restaurant_db`.`product` ( name, description, img, price, amount, cate_id) values ('Ca Kho To','(Braised Fish In A Clay Pot', '../resources/images/asset/27.jpg', 300000, 25, 3);
 insert into `restaurant_db`.`product` ( name, description, img, price, amount, cate_id) values ('Gia Cay ','Braised Pork With Galangal/False Dog Meat', '../resources/images/asset/28.jpg', 300000, 25, 1);
 insert into `restaurant_db`.`product` ( name, description, img, price, amount, cate_id) values ('Sua Chua Nep Cam','Black Glutinous Rice Yogurt', '../resources/images/asset/29.jpg', 100000, 25, 2);
+
+
+
+
+
+
+insert into dining_table (status,customer_id) value ('active',null)
+insert into dining_table (status,customer_id) value ('active',null)
+insert into dining_table (status,customer_id) value ('active',null)
+insert into dining_table (status,customer_id) value ('active',null)
+insert into dining_table (status,customer_id) value ('active',null)
+insert into dining_table (status,customer_id) value ('active',null)
+insert into dining_table (status,customer_id) value ('active',null)
+insert into dining_table (status,customer_id) value ('active',null)
+insert into dining_table (status,customer_id) value ('active',null)
+insert into dining_table (status,customer_id) value ('active',null)
