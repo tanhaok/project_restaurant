@@ -80,8 +80,12 @@ public class CartController {
     }
     @RequestMapping("/edit/{product_id}/{product_amount}")
     public ModelAndView Edit(HttpSession session, @PathVariable int product_id, @PathVariable int product_amount) {
+
         AccountModel account = (AccountModel) session.getAttribute("account");
         int customer_id = account.getCustomer_id();
+        if (product_amount < 1){
+            return new ModelAndView("redirect:/cart/view/" + customer_id);
+        }
         ModelAndView mav = new ModelAndView("redirect:/cart/view/" + customer_id);
         CartModel itemCart = new CartModel();
         itemCart.setId(cartDao.getIdCart(customer_id));
