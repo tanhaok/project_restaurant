@@ -5,7 +5,7 @@ import com.hcmute.dao.InvoiceDao;
 import com.hcmute.model.AccountModel;
 import com.hcmute.model.CartModel;
 import com.hcmute.model.InvoiceModel;
-import com.hcmute.utils.InvoicePDFGenerator;
+//import com.hcmute.utils.InvoicePDFGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,8 +44,8 @@ public class CheckoutController {
         invoice.setCreateDate(currentDate);
 
         invoiceDao.createInvoice(invoice);
-        InvoicePDFGenerator pdfGenerator = new InvoicePDFGenerator(cart, account, invoice);
-        pdfGenerator.writeData();
+       // InvoicePDFGenerator pdfGenerator = new InvoicePDFGenerator(cart, account, invoice);
+      //  pdfGenerator.writeData();
 
         cartDao.updateStatusCart(cartID);
         session.setAttribute("totalAmount", 0);

@@ -45,7 +45,7 @@
 </head>
 <body>
 <div class="container">
-<form:form method="POST" action="/restaurant_war_exploded/editsave" enctype="multipart/form-data">
+<form:form method="POST" action="/editsave" enctype="multipart/form-data">
     <table >
         <tr>
             <td></td>
@@ -64,12 +64,12 @@
 
         <tr>
             <label for="Phone">Phone</label>
-            <form:input path="phone" id="Phone" placeholder="Phone.."/>
+            <form:input path="phone" id="Phone" placeholder="Phone.." />
         </tr>
 
         <tr>
             <label for="Salary">Salary</label>
-            <form:input path="salary" id="Salary" placeholder="Salary.."/>
+            <form:input path="salary" id="Salary" placeholder="Salary.." required="true" min="1" type="number"/>
         </tr>
 
 

@@ -101,7 +101,7 @@
                     <a class="nav-link text-uppercase text-light" href="<c:url value="/menu"/>">Menu</a>
                 </li>
                 <li class="nav-item px-2 py-2">
-                    <a class="nav-link text-uppercase text-light" href="<c:url value="/dat-cho"/>">Đặt bàn</a>
+                    <a class="nav-link text-uppercase text-light" href="<c:url value="/book-table"/>">Đặt bàn</a>
                 </li>
                 <li class="nav-item px-2 py-2">
                     <a class="nav-link text-uppercase text-light" href="#about">Về chúng tôi</a>
@@ -158,7 +158,7 @@
                     </td>
                     <td data-th="Quantity">
                         <input class="form-control text-center" id="cart-quantity-${cart.productId}" type="number"
-                               value="${cart.productAmount}" min="1">
+                               value="${cart.productAmount}" min="1" required="true">
                     </td>
                     <td data-th="Subtotal" class="text-center">
                         <fmt:formatNumber type="number" maxFractionDigits="3"
@@ -185,8 +185,13 @@
                 <td class="hidden-xs text-center"><strong>Total: <fmt:formatNumber type="number" maxFractionDigits="3"
                                                                                    value="${sessionScope.totalPrice}"/>
                     đ</strong></td>
-                <td><a href="${pageContext.request.contextPath}/checkout/${sessionScope.account.customer_id}"
-                       class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+
+                <td>
+                    <c:if test="${cart.size() > 0}">
+                    <a href="${pageContext.request.contextPath}/checkout/${sessionScope.account.customer_id}"
+                       class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                    </c:if>
+                </td>
             </tr>
             </tfoot>
         </table>
@@ -324,7 +329,13 @@
     $(".edit-cart").on("click", function () {
         var id = $(this).data("id");
         var quantity = $("#cart-quantity-" + id).val()
-        window.location = "${pageContext.request.contextPath}/cart/edit/" + id + "/" + quantity;
+
+        if (!quantity) {
+            window.location = "${pageContext.request.contextPath}/cart/view/" +
+            ${sessionScope.account.customer_id};
+        } else {
+            window.location = "${pageContext.request.contextPath}/cart/edit/" + id + "/" + quantity;
+        }
     });
 </script>
 

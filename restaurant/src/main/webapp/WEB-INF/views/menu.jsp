@@ -146,7 +146,7 @@
                     <a class = "nav-link text-uppercase text-light" href = "/menu">Menu</a>
                 </li>
                 <li class = "nav-item px-2 py-2">
-                    <a class = "nav-link text-uppercase text-light" href = "<c:url value="/dat-cho"/>">Đặt bàn</a>
+                    <a class = "nav-link text-uppercase text-light" href = "<c:url value="/book-table"/>">Đặt bàn</a>
                 </li>
                 <li class = "nav-item px-2 py-2">
                     <a class = "nav-link text-uppercase text-light" href = "/trang-chu#about">Về chúng tôi</a>

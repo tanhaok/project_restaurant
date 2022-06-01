@@ -96,11 +96,11 @@
         </tr>
         <tr>
             <label for="Price">Price</label>
-            <form:input path="price" id="Price" placeholder="Price.."/>
+            <form:input path="price" id="Price" placeholder="Price.." required="true" min="1" type="number"/>
         </tr>
         <tr>
             <label for="Amount">Amount</label>
-            <form:input path="amount" id="Amount" placeholder="Amount.."/>
+            <form:input path="amount" id="Amount" placeholder="Amount.." required="true" min="1" max="100" type="number"/>
         </tr>
         <tr>
             <label>Category</label>

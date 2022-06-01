@@ -65,7 +65,7 @@
 
         <tr>
             <label for="Salary">Salary</label>
-            <form:input path="salary" id="Salary" placeholder="Salary.."/>
+            <form:input path="salary" id="Salary" placeholder="Salary.." required="true" min="1" type="number"/>
         </tr>
 
         <tr>
