@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d13676cf-7bc1-48f8-8d79-cf70a17fbaba" name="Changes" comment="add dependency">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcmute/utils/InvoicePDFGenerator.java" afterDir="false" />
+    <list default="true" id="d13676cf-7bc1-48f8-8d79-cf70a17fbaba" name="Changes" comment="Add PDF generator for invoice">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/da7b706d-5aa1-4f11-8d8d-883419a3d936.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/da7b706d-5aa1-4f11-8d8d-883419a3d936.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmute/controller/admin/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmute/controller/admin/FinanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmute/utils/DbUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmute/utils/DbUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +170,9 @@
       <workItem from="1653059780458" duration="2621000" />
       <workItem from="1653370218380" duration="1159000" />
       <workItem from="1653398241480" duration="4450000" />
+      <workItem from="1653404698997" duration="2491000" />
+      <workItem from="1653622471317" duration="649000" />
+      <workItem from="1653630523992" duration="3843000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor file name and variable">
       <created>1652748596084</created>
@@ -235,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653401981968</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add PDF generator for invoice">
+      <created>1653404966403</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1653404966403</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +272,7 @@
     <MESSAGE value="create menu page" />
     <MESSAGE value="finish comment" />
     <MESSAGE value="add dependency" />
-    <option name="LAST_COMMIT_MESSAGE" value="add dependency" />
+    <MESSAGE value="Add PDF generator for invoice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add PDF generator for invoice" />
   </component>
 </project>
